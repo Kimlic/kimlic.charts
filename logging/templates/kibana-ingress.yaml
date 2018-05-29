@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana
+  namespace: logging
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/auth-type: "basic"
+    ingress.kubernetes.io/auth-secret: "kibana-credentials"
+spec:
+  rules:
+  - host: {{ .Values.ingress }}
+    http:
+      paths:
+       - path:
+         backend:
+           serviceName: kibana
+           servicePort: 80

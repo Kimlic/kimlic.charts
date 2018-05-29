@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-es
+spec:
+  capacity:
+    storage: 150Gi
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: "/monitoring/es"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-es-plugins
+spec:
+  capacity:
+    storage: 200Mi
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: "/monitoring/es-plugins"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-es-configs
+spec:
+  capacity:
+    storage: 200Mi
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: "/monitoring/es-configs"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-es-logs
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: "/monitoring/es-logs"

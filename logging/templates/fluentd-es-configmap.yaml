@@ -1,0 +1,139 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: fluentd-configs
+  namespace: logging
+data:
+  fluent.conf: |-
+    @include kong.conf
+
+    <source>
+      @type prometheus
+      bind 0.0.0.0
+      port {{ .Values.fluentd.metrics_port }}
+      metrics_path /metrics
+    </source>
+    <source>
+      @type prometheus_output_monitor
+      interval 10
+      <labels>
+        hostname ${hostname}
+      </labels>
+    </source>
+
+    <source>
+      @type tail
+      path /var/log/containers/api*,/var/log/containers/gateway*,/var/log/containers/web*,/var/log/containers/fe*,/var/log/containers/portal*
+      pos_file /var/log/containers/logs.pos
+      <parse>
+        @type json
+        time_key time
+        time_format %FT%T.%N
+      </parse>
+      tag kubernetes.phoenix.*
+    </source>
+
+    <filter kubernetes.**>
+      @type kubernetes_metadata
+      merge_json_log false
+    </filter>
+
+    <match kubernetes.phoenix.**>
+      @type rewrite_tag_filter
+
+      <rule>
+        key log
+        pattern log_type\":\"http
+        tag phoenix.app
+      </rule>
+      <rule>
+        key log
+        pattern log_type\":\"http_request
+        tag phoenix.http_request
+      </rule>
+      <rule>
+        key log
+        pattern log_type\":\"debug
+        tag phoenix.debug
+      </rule>
+      <rule>
+        key log
+        pattern log_type\":\"persistence
+        tag phoenix.db
+      </rule>
+      <rule>
+        key log
+        pattern log_type\":\"error
+        tag phoenix.error
+      </rule>
+      <rule>
+        key log
+        pattern log_type\":\"microservice_request
+        tag phoenix.microservice_call
+      </rule>
+      <rule>
+        key log
+        pattern log_type\":\"microservice_res
+        tag phoenix.microservice_response
+      </rule>
+    </match>
+
+    <filter phoenix.*>
+      @type parser
+      key_name log
+      reserve_data true
+      reserve_time true
+      hash_value_field phoenix
+      <parse>
+        @type json
+      </parse>
+    </filter>
+
+    <filter phoenix.*>
+      @type record_transformer
+      remove_keys ["log"]
+    </filter>
+
+    <match gateway phoenix.*>
+      @type elasticsearch
+      include_tag_key true
+      host "{{ .Values.stateful_set.name }}"
+      port 9200
+      logstash_format true
+      buffer_chunk_limit 10M
+      buffer_queue_limit 16
+      flush_interval {{ .Values.fluentd.flush_interval }}
+      max_retry_wait 30
+      retry_limit 1
+      num_threads 2
+    </match>
+  kong.conf: |-
+    <source>
+      @type tail
+      path /var/log/containers/api*kong-api*
+      pos_file /tmp/kong-containers.log.pos
+      <parse>
+        @type json
+        time_key time
+        time_format %FT%T.%N
+      </parse>
+      tag gateway
+      read_from_head true
+    </source>
+
+    <filter gateway>
+      @type parser
+      key_name log
+      reserve_data true
+      reserve_time true
+      <parse>
+        @type regexp
+        expression /(?<remote>.*) - \[(?<time>.*)\] "(?<method>.*) (?<path>.*) .*" (?<code>\d+) (?<size>\d+) (?<agent>.*) "(?<referrer>.*)" Consumer: (?<consumer_id>.*), Client: (?<client_id>.*) Request headers: \[{Authorization: (?<authorization>.*)}, {Content-Type: (?<req_content_type>.*)}, {Api-Key: (?<api_key>.*)}, {Accept-Encoding: (?<accept_encoding>.*)}\] Response headers: \[{Content-Type: (?<res_content_type>.*)}, {Request-Id: (?<request_id>.*)}\]/
+        time_format %d/%b/%Y:%H:%M:%S %z
+      </parse>
+    </filter>
+
+    <filter gateway>
+      @type record_transformer
+      remove_keys ["log"]
+    </filter>

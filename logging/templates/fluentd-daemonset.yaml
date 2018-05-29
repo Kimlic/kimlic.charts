@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+  namespace: logging
+  labels:
+    k8s-app: fluentd
+spec:
+  selector:
+    matchLabels:
+      k8s-app: fluentd
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        k8s-app: fluentd
+    spec:
+      serviceAccount: fluentd-es
+      containers:
+      - name: fluentd-es
+        image: edenlabllc/fluentd:1.1.0
+        resources:
+          limits:
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        volumeMounts:
+        - name: k8s-pod-logs
+          mountPath: /var/log
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+          readOnly: true
+        - name: config-volume
+          mountPath: /fluentd/etc
+        command:
+          - sh
+          - -c
+          - |
+            exec fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins $FLUENTD_OPT
+        ports:
+          - containerPort: {{ .Values.fluentd.metrics_port }}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: k8s-pod-logs
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers
+      - name: config-volume
+        configMap:
+          name: fluentd-configs

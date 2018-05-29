@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "{{ .Values.fluentd.metrics_port }}"
+    prometheus.io/path: "/metrics"
+  name: fluentd-metrics-exporter-svc
+  namespace: logging
+spec:
+  ports:
+  - port: {{ .Values.fluentd.metrics_port }}
+    targetPort: {{ .Values.fluentd.metrics_port }}
+    protocol: TCP
+    name: fluentd-metrics-port
+  selector:
+    k8s-app: fluentd
+  type: ClusterIP

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.stateful_set.name }}
+  namespace: logging
+  labels:
+    k8s-app: {{ .Values.stateful_set.name }}
+spec:
+  ports:
+  - port: 9200
+    protocol: TCP
+    targetPort: db
+  type: ClusterIP
+  selector:
+    k8s-app: {{ .Values.stateful_set.name }}

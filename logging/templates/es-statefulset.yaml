@@ -1,0 +1,132 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.stateful_set.name }}
+  namespace: logging
+  labels:
+    k8s-app: {{ .Values.stateful_set.name }}
+    version: {{ .Values.es.version }}
+spec:
+  serviceName: {{ .Values.stateful_set.name }}
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: {{ .Values.stateful_set.name }}
+      version: {{ .Values.es.version }}
+  template:
+    metadata:
+      labels:
+        k8s-app: {{ .Values.stateful_set.name }}
+        version: {{ .Values.es.version }}
+    spec:
+      containers:
+      - image: {{ .Values.es.image }}
+        name: {{ .Values.stateful_set.name }}
+        resources:
+          # need more cpu upon initialization, therefore burstable class
+          limits:
+            cpu: "{{ .Values.es.limits.cpu }}"
+          requests:
+            cpu: "100m"
+        ports:
+        - containerPort: 9200
+          name: db
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: {{ .Values.master.persistence.name }}
+          mountPath: /usr/share/elasticsearch/data
+        - name: {{ .Values.master.plugins.name }}
+          mountPath: /usr/share/elasticsearch/plugins
+        - name: {{ .Values.master.configs.name }}
+          mountPath: /usr/share/elasticsearch/config
+        - name: {{ .Values.master.logs.name }}
+          mountPath: /es-logs
+        env:
+          - name: "MINIMUM_MASTER_NODES" # TODO: remove it after migration to new elastic?
+            value: "1"
+          - name: "ES_JAVA_OPTS"
+            value: {{ .Values.es.ES_JAVA_OPTS }}
+        command:
+        - sh
+        - -c
+        - |
+          # these lines are only needed on the fresh start
+          chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
+          chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/plugins
+          chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/config
+          chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/logs
+
+          /usr/local/bin/docker-entrypoint.sh eswrapper
+      # Elasticsearch requires vm.max_map_count to be at least 262144.
+      # If your OS already sets up this number to a higher value, feel free
+      # to remove this init container.
+      {{- if .Values.nodeSelector }}
+      nodeSelector: 
+        {{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end}}
+      initContainers:
+      - image: alpine:3.6
+        command: ["/sbin/sysctl", "-w", "vm.max_map_count=262144"]
+        name: elasticsearch-init
+        securityContext:
+          privileged: true
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ .Values.master.logs.name }}
+      spec:
+        {{- if ne .Values.env "dev" }}
+        storageClassName: standard
+        {{- end}}
+        accessModes:
+           - ReadWriteOnce
+        resources:
+           requests:
+             storage: {{ .Values.master.logs.size }}
+        {{- if .Values.master.logs.volume_name }}
+        volumeName: {{ .Values.master.logs.volume_name }}
+        {{- end}}
+    - metadata:
+        name: {{ .Values.master.configs.name }}
+      spec:
+        {{- if ne .Values.env "dev" }}
+        storageClassName: standard
+        {{- end}}
+        accessModes:
+           - ReadWriteOnce
+        resources:
+           requests:
+             storage: {{ .Values.master.configs.size }}
+        {{- if .Values.master.configs.volume_name }}
+        volumeName: {{ .Values.master.configs.volume_name }}
+        {{- end}}
+    - metadata:
+        name: {{ .Values.master.plugins.name }}
+      spec:
+        {{- if ne .Values.env "dev" }}
+        storageClassName: standard
+        {{- end}}
+        accessModes:
+           - ReadWriteOnce
+        resources:
+           requests:
+             storage: {{ .Values.master.plugins.size }}
+        {{- if .Values.master.plugins.volume_name }}
+        volumeName: {{ .Values.master.plugins.volume_name }}
+        {{- end}}
+    - metadata:
+        name: {{ .Values.master.persistence.name }}
+      spec:
+        {{- if ne .Values.env "dev" }}
+        storageClassName: ssd
+        {{- end}}
+        accessModes:
+           - ReadWriteOnce
+        resources:
+           requests:
+             storage: {{ .Values.master.persistence.size }}
+        {{- if .Values.master.persistence.volume_name }}
+        volumeName: {{ .Values.master.persistence.volume_name }}
+        {{- end}}
