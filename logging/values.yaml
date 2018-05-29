@@ -25,7 +25,7 @@ fluentd:
   flush_interval: 300s
   metrics_port: 24231
 
-ingress: logs-preprod.ehealth-ukraine.org
+ingress: logs-dev.vlytvynov.club
 ingress_pw: logworm:$apr1$xWXahlze$1RXMj99aq2U.41iJSTmKJ/
 
 master:

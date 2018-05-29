@@ -1,27 +1,27 @@
-apiVersion: batch/v1beta1
-kind: CronJob
-metadata:
-  name: elasticsearch-snapshots-maker
-  namespace: logging
-  labels:
-    name: elasticsearch-snapshots-maker
-spec:
-  successfulJobsHistoryLimit: 4
-  failedJobsHistoryLimit: 4
-  schedule: "{{ .Values.snapshots.cronjob_formula }}"
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-          - name: curator
-            image: {{ .Values.snapshots.cronjob_image }}
-            command:
-            - sh
-            - -c
-            - |
-              curator_cli --host {{ .Values.snapshots.es_host }} \
-                          --port {{ .Values.snapshots.es_port }} \
-                          snapshot \
-                          --repository {{ .Values.snapshots.es_repository_name }}
-          restartPolicy: Never
+# apiVersion: batch/v1beta1
+# kind: CronJob
+# metadata:
+#   name: elasticsearch-snapshots-maker
+#   namespace: logging
+#   labels:
+#     name: elasticsearch-snapshots-maker
+# spec:
+#   successfulJobsHistoryLimit: 4
+#   failedJobsHistoryLimit: 4
+#   schedule: "{{ .Values.snapshots.cronjob_formula }}"
+#   jobTemplate:
+#     spec:
+#       template:
+#         spec:
+#           containers:
+#           - name: curator
+#             image: {{ .Values.snapshots.cronjob_image }}
+#             command:
+#             - sh
+#             - -c
+#             - |
+#               curator_cli --host {{ .Values.snapshots.es_host }} \
+#                           --port {{ .Values.snapshots.es_port }} \
+#                           snapshot \
+#                           --repository {{ .Values.snapshots.es_repository_name }}
+#           restartPolicy: Never
