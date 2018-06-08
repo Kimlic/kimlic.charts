@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dev
+  name: node-1
+  labels:
+    app: node-1
+spec:
+  ports:
+  - port: 22000
+    targetPort: 22000
+    protocol: TCP
+  selector:
+    app: node-1
+  type: ClusterIP

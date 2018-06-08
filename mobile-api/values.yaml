@@ -1,0 +1,41 @@
+
+## API ##
+#Docker image and tag for api
+image_api:
+  repository: kimlictr/mobile_api
+  tag: "0.33.3"
+
+env_api:
+  SECRET_KEY: "%s$lddL35j9~~uDN@n8ub1#mJHTBb7hlat#ooz?TvcjA5{mn35$d2GJFN2~MT#99"
+  ERLANG_COOKIE: "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
+  PORT: "4000"
+  QUORUM_URI: node-1
+ # DB_HOST: "db-svc"
+ # DB_PORT: "5432"
+ # DB_USER: "db"
+ # DB_NAME: "kimkublic"
+ # DB_PASSWORD: "1"
+  REDIS_URI: "redis://:23ZKbrKnRA@redis-master.dev.svc.cluster.local:6379"
+  REDIS_PASSWORD: "23ZKbrKnRA"
+  #SECRET_KEY: "MAJJSvyjkz"
+ # RABBITMQ_URI: "amqp://user:68fZGV2MnB@rabbitmq?heartbeat=30"
+  RABBITMQ_HOST: "rabbitmq.dev.svc.cluster.local"
+  RABBITMQ_USERNAME: "test"
+  RABBITMQ_PASSWORD: "test"
+  QUORUM_URI: ""
+  AMAZON_SES_REGION_ENDPOINT: ""
+  AMAZON_SES_ACCESS_KEY: ""
+  AMAZON_SES_SECRET_KEY: ""
+  EMAIL_CREATE_PROFILE_FROM_EMAIL: ""
+  EMAIL_CREATE_PROFILE_FROM_NAME: ""
+  EMAIL_CREATE_PROFILE_SUBJECT: ""
+    # App migrations
+resources_api:
+  cpu: "10m"
+  cpu_limit: "1"
+  memory: "150Mi"
+  memory_limit: "300Mi"
+
+rollingUpdate:
+  maxSurge: "1"
+  maxUnavailable: "1"

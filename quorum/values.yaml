@@ -1,0 +1,21 @@
+
+## API ##
+#Docker image and tag for api
+image_api:
+  repository: kimlictr/quorum
+  tag: "node1"
+
+env_api:
+    CORE_node-1_NETWORKID: node-1
+    CORE_NODE_IP: node-1
+    CORE_MASTERNODE_IP: node-1
+    # App migrations
+resources_api:
+  cpu: "10m"
+  cpu_limit: "2"
+  memory: "150Mi"
+  memory_limit: "3000Mi"
+
+rollingUpdate:
+  maxSurge: "1"
+  maxUnavailable: "1"
