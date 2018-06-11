@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   namespace: dev
-  name: api
+  name: api-mobile
   labels:
     app: api
     version: {{ .Values.image_api.tag }}
