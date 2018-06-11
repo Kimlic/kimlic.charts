@@ -11,7 +11,7 @@ env_api:
   PORT: "4000"
   AUTHORIZATION_SALT: "1234567890"
   # Quorum
-  QUORUM_URI: "node-1"
+  QUORUM_URI: "node-1:22000"
  # DB_HOST: "db-svc"
  # DB_PORT: "5432"
  # DB_USER: "db"
