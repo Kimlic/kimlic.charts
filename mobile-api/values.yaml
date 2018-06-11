@@ -3,33 +3,39 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.35.4"
+  tag: "0.36.7"
 
 env_api:
   SECRET_KEY: "%s$lddL35j9~~uDN@n8ub1#mJHTBb7hlat#ooz?TvcjA5{mn35$d2GJFN2~MT#99"
   ERLANG_COOKIE: "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
   PORT: "4000"
-  QUORUM_URI: node-1
+  AUTHORIZATION_SALT: "1234567890"
+  # Quorum
+  QUORUM_URI: "node-1"
  # DB_HOST: "db-svc"
  # DB_PORT: "5432"
  # DB_USER: "db"
  # DB_NAME: "kimkublic"
  # DB_PASSWORD: "1"
+ # Redis
   REDIS_URI: "redis://:23ZKbrKnRA@redis-master.dev.svc.cluster.local:6379"
   REDIS_PASSWORD: "23ZKbrKnRA"
   #SECRET_KEY: "MAJJSvyjkz"
+  # RabbitMQ
  # RABBITMQ_URI: "amqp://user:68fZGV2MnB@rabbitmq?heartbeat=30"
   RABBITMQ_HOST: "rabbitmq.dev.svc.cluster.local"
-  AUTHORIZATION_SALT: "1234567890"
   RABBITMQ_USERNAME: "test"
   RABBITMQ_PASSWORD: "test"
-  QUORUM_URI: ""
+  # Email
   AMAZON_SES_REGION_ENDPOINT: ""
   AMAZON_SES_ACCESS_KEY: ""
   AMAZON_SES_SECRET_KEY: ""
   EMAIL_CREATE_PROFILE_FROM_EMAIL: ""
   EMAIL_CREATE_PROFILE_FROM_NAME: ""
   EMAIL_CREATE_PROFILE_SUBJECT: ""
+  # Twilio
+  TWILIO_ACCOUNT_SID: "AC07bf3306b3acf8fe318a5f60ec24466f"
+  TWILIO_AUTH_TOKEN: "a4cb70766ad8b8bfbe47fe4f6bce0f22"
     # App migrations
 resources_api:
   cpu: "10m"
