@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "node1"
+  tag: "node1-local"
 
 env_api:
     CORE_node-1_NETWORKID: node-1

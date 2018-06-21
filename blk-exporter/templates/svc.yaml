@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace:  {{ .Values.namespaces }}
+  name: blk-exporter
+  labels:
+    app: api
+spec:
+  ports:
+  - port: 8081
+    targetPort: 8081
+    protocol: TCP
+    name: http
+  selector:
+    app: api
+  type: ClusterIP

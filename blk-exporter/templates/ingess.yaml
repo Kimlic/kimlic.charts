@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: fe-exporter
+  namespace: {{ .Values.namespaces }}
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: blk-exporter-dev.kimlic.com
+    http:
+      paths:
+      - backend:
+          serviceName: fe-exporter-svc
+          servicePort: 80
