@@ -44,18 +44,18 @@ spec:
           limits:
             cpu: {{ .Values.resources_api.cpu_limit }}
             memory: {{ .Values.resources_api.memory_limit }}
-        readinessProbe:
-          timeoutSeconds: 2
-          initialDelaySeconds: 5
-          failureThreshold: 3
-          tcpSocket:
-            port: 8081
-        livenessProbe:
-          timeoutSeconds: 5
-          initialDelaySeconds: 50
-          failureThreshold: 3
-          tcpSocket:
-            port: 8081
+        # readinessProbe:
+        #   timeoutSeconds: 2
+        #   initialDelaySeconds: 5
+        #   failureThreshold: 3
+        #   tcpSocket:
+        #     port: 8081
+        # livenessProbe:
+        #   timeoutSeconds: 5
+        #   initialDelaySeconds: 50
+        #   failureThreshold: 3
+        #   tcpSocket:
+        #     port: 8081
       - name: mongodb
         image: mongo:3.4.10
         command:
@@ -65,16 +65,16 @@ spec:
         - containerPort: 27017
           name: peer
         readinessProbe:
-          timeoutSeconds: 2
-          initialDelaySeconds: 5
-          failureThreshold: 3
-          tcpSocket:
-            port: 27017
-        livenessProbe:
-          timeoutSeconds: 2
-          initialDelaySeconds: 5
-          failureThreshold: 3
-          tcpSocket:
+        #   timeoutSeconds: 2
+        #   initialDelaySeconds: 5
+        #   failureThreshold: 3
+        #   tcpSocket:
+        #     port: 27017
+        # livenessProbe:
+        #   timeoutSeconds: 2
+        #   initialDelaySeconds: 5
+        #   failureThreshold: 3
+        #   tcpSocket:
             port: 27017
       - name: ui-exporter
         image: {{ .Values.image_fe.image}}:{{ .Values.image_fe.tag}}
@@ -85,17 +85,17 @@ spec:
         env:
         - name: REACT_APP_EXPLORER
           value:  "{{ .Values.env_fe.REACT_APP_EXPLORER}}"
-        readinessProbe:
-          timeoutSeconds: 2
-          initialDelaySeconds: 5
-          failureThreshold: 3
-          tcpSocket:
-            port: 5000
-        livenessProbe:
-          timeoutSeconds: 2
-          initialDelaySeconds: 5
-          failureThreshold: 3
-          tcpSocket:
-            port: 5000
+        # readinessProbe:
+        #   timeoutSeconds: 2
+        #   initialDelaySeconds: 5
+        #   failureThreshold: 3
+        #   tcpSocket:
+        #     port: 5000
+        # livenessProbe:
+        #   timeoutSeconds: 2
+        #   initialDelaySeconds: 5
+        #   failureThreshold: 3
+        #   tcpSocket:
+        #     port: 5000
       nodeSelector:
         node: {{ .Values.env }}
