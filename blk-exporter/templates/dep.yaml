@@ -4,14 +4,14 @@ metadata:
   namespace: {{ .Values.namespaces }}
   name: blk-exporter
   labels:
-    app: api
+    app: blk
     version: {{ .Values.image_api.tag }}
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: api
+      app: blk
   strategy:
     rollingUpdate:
       maxSurge: {{ .Values.rollingUpdate.maxSurge }}
@@ -20,7 +20,7 @@ spec:
   template:
     metadata:
       labels:
-        app: api
+        app: blk
         version: {{ .Values.image_api.tag }}
     spec:
       containers:
@@ -44,18 +44,18 @@ spec:
           limits:
             cpu: {{ .Values.resources_api.cpu_limit }}
             memory: {{ .Values.resources_api.memory_limit }}
-        # readinessProbe:
-        #   timeoutSeconds: 2
-        #   initialDelaySeconds: 5
-        #   failureThreshold: 3
-        #   tcpSocket:
-        #     port: 8081
-        # livenessProbe:
-        #   timeoutSeconds: 5
-        #   initialDelaySeconds: 50
-        #   failureThreshold: 3
-        #   tcpSocket:
-        #     port: 8081
+        readinessProbe:
+          timeoutSeconds: 2
+          initialDelaySeconds: 5
+          failureThreshold: 3
+          tcpSocket:
+            port: 8081
+        livenessProbe:
+          timeoutSeconds: 5
+          initialDelaySeconds: 50
+          failureThreshold: 3
+          tcpSocket:
+            port: 8081
       - name: mongodb
         image: mongo:3.4.10
         command:
@@ -65,16 +65,16 @@ spec:
         - containerPort: 27017
           name: peer
         readinessProbe:
-        #   timeoutSeconds: 2
-        #   initialDelaySeconds: 5
-        #   failureThreshold: 3
-        #   tcpSocket:
-        #     port: 27017
-        # livenessProbe:
-        #   timeoutSeconds: 2
-        #   initialDelaySeconds: 5
-        #   failureThreshold: 3
-        #   tcpSocket:
+          timeoutSeconds: 2
+          initialDelaySeconds: 5
+          failureThreshold: 3
+          tcpSocket:
+            port: 27017
+        livenessProbe:
+          timeoutSeconds: 2
+          initialDelaySeconds: 5
+          failureThreshold: 3
+          tcpSocket:
             port: 27017
       - name: ui-exporter
         image: {{ .Values.image_fe.image}}:{{ .Values.image_fe.tag}}

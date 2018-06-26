@@ -4,7 +4,7 @@ metadata:
   namespace:  {{ .Values.namespaces }}
   name: blk-exporter
   labels:
-    app: api
+    app: blk
 spec:
   ports:
   - port: 8081
@@ -12,5 +12,5 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: api
+    app: blk
   type: ClusterIP
