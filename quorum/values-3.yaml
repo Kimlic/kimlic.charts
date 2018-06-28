@@ -1,0 +1,26 @@
+
+## API ##
+#Docker image and tag for api
+image_api:
+  repository: kimlictr/quorum
+  tag: "node3-0.0.1"
+
+env_api:
+    CORE_node-3_NETWORKID: node-3
+    CORE_NODE_IP: node-3
+    CORE_MASTERNODE_IP: node-1
+    # App migrations
+resources_api:
+  cpu: "10m"
+  cpu_limit: "2"
+  memory: "150Mi"
+  memory_limit: "3000Mi"
+
+rollingUpdate:
+  maxSurge: "1"
+  maxUnavailable: "1"
+
+port_svc: "22002"
+port: "22000"
+node: "node-3"
+env: "dev"

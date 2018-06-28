@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: dev
-  name: node-1
+  namespace: {{ .Values.env }}
+  name:  {{ .Values.node }}
   labels:
-    app: node-1
+    app: {{ .Values.node }}
     version: {{ .Values.image_api.tag }}
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: node-1
+      app: {{ .Values.node }}
   strategy:
     rollingUpdate:
       maxSurge: {{ .Values.rollingUpdate.maxSurge }}
@@ -20,15 +20,15 @@ spec:
   template:
     metadata:
       labels:
-        app: node-1
+        app: {{ .Values.node }}
         version: {{ .Values.image_api.tag }}
     spec:
       containers:
-      - name: node-1
+      - name: {{ .Values.node }}
         image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 22000
+        - containerPort:  {{ .Values.port }}
           protocol: TCP
         env:
         {{- range $name, $value := .Values.env_api }}
@@ -49,14 +49,14 @@ spec:
           initialDelaySeconds: 5
           failureThreshold: 3
           tcpSocket:
-            port: 22000
+            port:  {{ .Values.port }}
         livenessProbe:
           timeoutSeconds: 2
           initialDelaySeconds: 5
           failureThreshold: 3
           tcpSocket:
-            port: 22000
+            port:  {{ .Values.port }}
       nodeSelector:
-        node: dev
+        node:  {{ .Values.env }}
       imagePullSecrets:
       - name: regcred

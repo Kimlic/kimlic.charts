@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "node1"
+  tag: "node1-0.0.1"
 
 env_api:
     CORE_node-1_NETWORKID: node-1
@@ -19,3 +19,8 @@ resources_api:
 rollingUpdate:
   maxSurge: "1"
   maxUnavailable: "1"
+
+port_svc: "22000"
+port: "22000"
+node: "node-1"
+env: "dev"
