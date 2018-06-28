@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.42.0"
+  tag: "0.48.8"
 
 env_api:
   SECRET_KEY: "%s$lddL35j9~~uDN@n8ub1#mJHTBb7hlat#ooz?TvcjA5{mn35$d2GJFN2~MT#99"
@@ -11,7 +11,7 @@ env_api:
   PORT: "4000"
   AUTHORIZATION_SALT: "1234567890"
   # Quorum
-  QUORUM_URI: "node-1:22000"
+  QUORUM_URI: "40.115.43.126:22000"
  # DB_HOST: "db-svc"
  # DB_PORT: "5432"
  # DB_USER: "db"
@@ -27,15 +27,26 @@ env_api:
   RABBITMQ_USERNAME: "test"
   RABBITMQ_PASSWORD: "test"
   # Email
-  AMAZON_SES_REGION_ENDPOINT: ""
-  AMAZON_SES_ACCESS_KEY: ""
-  AMAZON_SES_SECRET_KEY: ""
-  EMAIL_CREATE_PROFILE_FROM_EMAIL: ""
-  EMAIL_CREATE_PROFILE_FROM_NAME: ""
-  EMAIL_CREATE_PROFILE_SUBJECT: ""
+  AMAZON_SES_REGION_ENDPOINT: "eu-west-1"
+  AMAZON_SES_ACCESS_KEY: "AKIAJXIR6LE2FNZFBTFA"
+  AMAZON_SES_SECRET_KEY: "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"
+  EMAIL_CREATE_PROFILE_FROM_EMAIL: "verification@kimlic.com"
+  EMAIL_CREATE_PROFILE_FROM_NAME: "Kimlic"
+  EMAIL_CREATE_PROFILE_SUBJECT: "Kimlic - User email verification"
+  # Verifications
+  VERIFICATION_EMAIL_TTL: "86400" # 1 day in seconds
+  VERIFICATION_PHONE_TTL: "3600" # 1 hour in seconds
   # Twilio
   TWILIO_ACCOUNT_SID: "AC07bf3306b3acf8fe318a5f60ec24466f"
   TWILIO_AUTH_TOKEN: "a4cb70766ad8b8bfbe47fe4f6bce0f22"
+  # SMS rate limit
+  RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT: "86400" # 1 day in seconds
+  RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS: "5"
+  # Quorum
+  KIMLIC_AP_ADDRESS: "0x4e35fbae376ce6630e33d06e65d1514d1d3f09e1"
+  KIMLIC_AP_PASSWORD: "Kimlicp@ssw0rd"
+  CONTEXT_STORAGE_ADDRESS: "0xa9be0a22b4993fe7202a2aaee2a9f66a81fd6b85"
+  QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount"
     # App migrations
 resources_api:
   cpu: "10m"
