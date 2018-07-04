@@ -18,14 +18,14 @@ env_api:
  # DB_NAME: "kimkublic"
  # DB_PASSWORD: "1"
  # Redis
-  REDIS_URI: "redis://:23ZKbrKnRA@redis-master.dev.svc.cluster.local:6379"
-  REDIS_PASSWORD: "23ZKbrKnRA"
+  REDIS_URI: "redis://kimlic-dev.redis.cache.windows.net:6380,password=ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc=,ssl=True,abortConnect=False"
+  REDIS_PASSWORD: "ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc"
   #SECRET_KEY: "MAJJSvyjkz"
   # RabbitMQ
  # RABBITMQ_URI: "amqp://user:68fZGV2MnB@rabbitmq?heartbeat=30"
   RABBITMQ_HOST: "rabbitmq.dev.svc.cluster.local"
-  RABBITMQ_USERNAME: "test"
-  RABBITMQ_PASSWORD: "test"
+  RABBITMQ_USERNAME: "user"
+  RABBITMQ_PASSWORD: "Ehfo0MiakF"
   # Email
   AMAZON_SES_REGION_ENDPOINT: ""
   AMAZON_SES_ACCESS_KEY: ""

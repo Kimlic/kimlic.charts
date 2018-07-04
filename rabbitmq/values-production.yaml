@@ -117,7 +117,7 @@ replicas: 1
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
 nodeSelector:
-  node: dev
+ # node: dev
 tolerations: []
 affinity: {}
 

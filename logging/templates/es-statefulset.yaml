@@ -65,7 +65,7 @@ spec:
       # to remove this init container.
       {{- if .Values.nodeSelector }}
       nodeSelector: 
-        {{ toYaml .Values.nodeSelector | indent 8 }}
+    #    {{ toYaml .Values.nodeSelector | indent 8 }}
       {{- end}}
       initContainers:
       - image: alpine:3.6
@@ -77,8 +77,8 @@ spec:
     - metadata:
         name: {{ .Values.master.logs.name }}
       spec:
-        {{- if ne .Values.env "dev" }}
-        storageClassName: standard
+        {{- if ne .Values.env "denovo" }}
+        storageClassName: default
         {{- end}}
         accessModes:
            - ReadWriteOnce
@@ -91,8 +91,8 @@ spec:
     - metadata:
         name: {{ .Values.master.configs.name }}
       spec:
-        {{- if ne .Values.env "dev" }}
-        storageClassName: standard
+        {{- if ne .Values.env "denovo" }}
+        storageClassName: default
         {{- end}}
         accessModes:
            - ReadWriteOnce
@@ -105,8 +105,8 @@ spec:
     - metadata:
         name: {{ .Values.master.plugins.name }}
       spec:
-        {{- if ne .Values.env "dev" }}
-        storageClassName: standard
+        {{- if ne .Values.env "denovo" }}
+        storageClassName: default
         {{- end}}
         accessModes:
            - ReadWriteOnce
@@ -119,8 +119,8 @@ spec:
     - metadata:
         name: {{ .Values.master.persistence.name }}
       spec:
-        {{- if ne .Values.env "dev" }}
-        storageClassName: ssd
+        {{- if ne .Values.env "denovo" }}
+        storageClassName: default
         {{- end}}
         accessModes:
            - ReadWriteOnce

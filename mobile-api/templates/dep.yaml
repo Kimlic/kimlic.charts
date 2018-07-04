@@ -57,6 +57,6 @@ spec:
           tcpSocket:
             port: 4000
       nodeSelector:
-        node: dev
+        # node: dev
       imagePullSecrets:
       - name: regcred

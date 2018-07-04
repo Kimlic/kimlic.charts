@@ -57,6 +57,6 @@ spec:
           tcpSocket:
             port:  {{ .Values.port }}
       nodeSelector:
-        node:  {{ .Values.env }}
+       # node:  {{ .Values.env }}
       imagePullSecrets:
       - name: regcred
