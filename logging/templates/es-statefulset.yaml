@@ -58,14 +58,13 @@ spec:
           chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/plugins
           chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/config
           chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/logs
-
           /usr/local/bin/docker-entrypoint.sh eswrapper
       # Elasticsearch requires vm.max_map_count to be at least 262144.
       # If your OS already sets up this number to a higher value, feel free
       # to remove this init container.
       {{- if .Values.nodeSelector }}
       nodeSelector: 
-    #    {{ toYaml .Values.nodeSelector | indent 8 }}
+      #  {{ toYaml .Values.nodeSelector | indent 8 }}
       {{- end}}
       initContainers:
       - image: alpine:3.6
@@ -77,56 +76,32 @@ spec:
     - metadata:
         name: {{ .Values.master.logs.name }}
       spec:
-        {{- if ne .Values.env "denovo" }}
-        storageClassName: default
-        {{- end}}
         accessModes:
            - ReadWriteOnce
         resources:
            requests:
              storage: {{ .Values.master.logs.size }}
-        {{- if .Values.master.logs.volume_name }}
-        volumeName: {{ .Values.master.logs.volume_name }}
-        {{- end}}
     - metadata:
         name: {{ .Values.master.configs.name }}
       spec:
-        {{- if ne .Values.env "denovo" }}
-        storageClassName: default
-        {{- end}}
         accessModes:
            - ReadWriteOnce
         resources:
            requests:
              storage: {{ .Values.master.configs.size }}
-        {{- if .Values.master.configs.volume_name }}
-        volumeName: {{ .Values.master.configs.volume_name }}
-        {{- end}}
     - metadata:
         name: {{ .Values.master.plugins.name }}
       spec:
-        {{- if ne .Values.env "denovo" }}
-        storageClassName: default
-        {{- end}}
         accessModes:
            - ReadWriteOnce
         resources:
            requests:
              storage: {{ .Values.master.plugins.size }}
-        {{- if .Values.master.plugins.volume_name }}
-        volumeName: {{ .Values.master.plugins.volume_name }}
-        {{- end}}
     - metadata:
         name: {{ .Values.master.persistence.name }}
       spec:
-        {{- if ne .Values.env "denovo" }}
-        storageClassName: default
-        {{- end}}
         accessModes:
            - ReadWriteOnce
         resources:
            requests:
              storage: {{ .Values.master.persistence.size }}
-        {{- if .Values.master.persistence.volume_name }}
-        volumeName: {{ .Values.master.persistence.volume_name }}
-        {{- end}}

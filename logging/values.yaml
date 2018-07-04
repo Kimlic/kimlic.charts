@@ -1,43 +1,50 @@
 env: dev
 
 stateful_set:
-  name: elasticsearch
+  name: elasticsearch-logging
 
 es:
   version: v6.0
-  image: docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+  image: docker.elastic.co/elasticsearch/elasticsearch:6.2.2
   limits:
     cpu: 4000
-  ES_JAVA_OPTS: "-Xms2g -Xmx2g"
+  ES_JAVA_OPTS: "-Xms4g -Xmx4g"
 
 kibana:
   app_name: kibana
-  image: docker.elastic.co/kibana/kibana:6.2.3
+  image: docker.elastic.co/kibana/kibana:6.2.2
 
 # snapshots:
 #   cronjob_image: edenlabllc/curator:5.5.1
 #   cronjob_formula: "0 */6 * * *"
-#   es_repository_name: dev_gcs_repository
-#   es_host: elasticsearch
+#   es_repository_name: preprod_gcs_repository
+#   es_host: elasticsearch-logging
 #   es_port: 9200
 
 fluentd:
-  flush_interval: 30s
+  flush_interval: 300s
   metrics_port: 24231
 
-ingress: logs.dev.asclepius.com.ua
-ingress_pw: logworm:$apr1$cFReyv5D$4QucUXLMaIW.0MbP/hipC/
+ingress: logs-dev.kimlic.com
+ingress_pw: logworm:$apr1$xWXahlze$1RXMj99aq2U.41iJSTmKJ/
 
 master:
   configs:
+    volume_name: pv-es-configs
     name: configs
     size: 1Gi
   plugins:
+    volume_name: pv-es-plugins
     name: plugins
     size: 1Gi
   persistence:
-    name: data
-    size: 10Gi
+    volume_name: pv-es
+    name: elasticsearch-logging
+    size: 15Gi
   logs:
+    volume_name: pv-es-logs
     name: logs
     size: 1Gi
+
+nodeSelector:
+  #node: master

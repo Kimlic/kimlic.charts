@@ -34,4 +34,4 @@ rollingUpdate:
   maxUnavailable: "1"
 
 namespaces: "dev"
-env: "dev"
+#env: "dev"
