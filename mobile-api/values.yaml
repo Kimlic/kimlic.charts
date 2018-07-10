@@ -3,39 +3,37 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.36.7"
+  tag: "0.54.1"
 
 env_api:
-  SECRET_KEY: "%s$lddL35j9~~uDN@n8ub1#mJHTBb7hlat#ooz?TvcjA5{mn35$d2GJFN2~MT#99"
-  ERLANG_COOKIE: "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
-  PORT: "4000"
-  AUTHORIZATION_SALT: "1234567890"
-  # Quorum
-  QUORUM_URI: "node-1:22000"
- # DB_HOST: "db-svc"
- # DB_PORT: "5432"
- # DB_USER: "db"
- # DB_NAME: "kimkublic"
- # DB_PASSWORD: "1"
- # Redis
-  REDIS_URI: "redis://kimlic-dev.redis.cache.windows.net:6380,password=ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc=,ssl=True,abortConnect=False"
-  REDIS_PASSWORD: "ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc"
-  #SECRET_KEY: "MAJJSvyjkz"
-  # RabbitMQ
- # RABBITMQ_URI: "amqp://user:68fZGV2MnB@rabbitmq?heartbeat=30"
-  RABBITMQ_HOST: "rabbitmq.dev.svc.cluster.local"
-  RABBITMQ_USERNAME: "user"
-  RABBITMQ_PASSWORD: "Ehfo0MiakF"
-  # Email
-  AMAZON_SES_REGION_ENDPOINT: ""
-  AMAZON_SES_ACCESS_KEY: ""
-  AMAZON_SES_SECRET_KEY: ""
-  EMAIL_CREATE_PROFILE_FROM_EMAIL: ""
-  EMAIL_CREATE_PROFILE_FROM_NAME: ""
-  EMAIL_CREATE_PROFILE_SUBJECT: ""
-  # Twilio
-  TWILIO_ACCOUNT_SID: "AC07bf3306b3acf8fe318a5f60ec24466f"
-  TWILIO_AUTH_TOKEN: "a4cb70766ad8b8bfbe47fe4f6bce0f22"
+      AMAZON_SES_ACCESS_KEY:                          "AKIAJXIR6LE2FNZFBTFA"
+      AMAZON_SES_REGION_ENDPOINT:                     "eu-west-1"
+      AMAZON_SES_SECRET_KEY:                          "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"
+      AUTHORIZATION_SALT:                             "1234567890"
+      CONTEXT_STORAGE_ADDRESS:                        "0xf928fd62717792c14e661749bfa74821a563d1b4"
+      EMAIL_CREATE_PROFILE_FROM_EMAIL:                "verification@kimlic.com"
+      EMAIL_CREATE_PROFILE_FROM_NAME:                 "Kimlic"
+      EMAIL_CREATE_PROFILE_SUBJECT:                   "Kimlic - User email verification"
+      ERLANG_COOKIE:                                  "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
+      KIMLIC_AP_ADDRESS:                              "0x0b5d5e3403128e29b3b55a1c8b518b17dcc0fb3a"
+      KIMLIC_AP_PASSWORD:                             "Kimlicp@ssw0rd"
+      PORT:                                           "4000"
+      QUORUM_ALLOWED_RPC_METHODS:                     "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount"
+      QUORUM_URI:                                     "40.115.43.126:22000"
+      RABBITMQ_HOST:                                  "rabbitmq.dev.svc.cluster.local"
+      RABBITMQ_PASSWORD:                              "A4KgN43E6m"
+      RABBITMQ_USERNAME:                              "user"
+      RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS:  "5"
+      RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT:   "86400"
+      REDIS_PASSWORD:                                 "ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc"
+      REDIS_URI:                                      "redis://kimlic-dev.redis.cache.windows.net:6380,password=ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc=,ssl=True,abortConnect=False"
+      SECRET_KEY:                                     "%s$lddL35j9~~uDN@n8ub1#mJHTBb7hlat#ooz?TvcjA5{mn35$d2GJFN2~MT#99"
+      TWILIO_ACCOUNT_SID:                             "AC07bf3306b3acf8fe318a5f60ec24466f"
+      TWILIO_AUTH_TOKEN:                              "a4cb70766ad8b8bfbe47fe4f6bce0f22"
+      VERIFF_AP_ADDRESS:                              "0xe414ba511451ebbfc91de224ede2dea4c51d3d07"
+      VERIFF_AP_PASSWORD:                             "Veriffp@ssw0rd"
+      VERIFICATION_EMAIL_TTL:                         "86400"
+      VERIFICATION_PHONE_TTL:                         "3600"
     # App migrations
 resources_api:
   cpu: "10m"
