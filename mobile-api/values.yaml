@@ -11,8 +11,7 @@ env_api:
   ERLANG_COOKIE:                                  "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
   PORT:                                           "4000"
   # Redis
-  REDIS_URI:                                      "redis://kimlic-dev.redis.cache.windows.net:6380,password=ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc=,ssl=True,abortConnect=False"
-  REDIS_PASSWORD:                                 "ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc"
+  REDIS_URI:                                      "rediss://:ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc@kimlic-dev.redis.cache.windows.net:6380"
   # RabbitMQ
   RABBITMQ_HOST:                                  "rabbitmq.dev.svc.cluster.local"
   RABBITMQ_USERNAME:                              "user"
