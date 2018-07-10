@@ -45,7 +45,7 @@ env_api:
   KIMLIC_AP_ADDRESS: "0x0b5d5e3403128e29b3b55a1c8b518b17dcc0fb3a"
   KIMLIC_AP_PASSWORD: "Kimlicp@ssw0rd"
   CONTEXT_STORAGE_ADDRESS: "0xf928fd62717792c14e661749bfa74821a563d1b4"
-  QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount"
+  QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount"
   VERIFF_AP_ADDRESS: "0xe414ba511451ebbfc91de224ede2dea4c51d3d07"
   VERIFF_AP_PASSWORD: "Veriffp@ssw0rd"
     # App migrations
