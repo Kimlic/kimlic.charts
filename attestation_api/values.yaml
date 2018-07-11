@@ -11,11 +11,21 @@ env_api:
   ERLANG_COOKIE:              "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
   PORT:                       "4000"
   # PostgreSQL
-  DB_HOST:                    "db-svc"
-  DB_PORT:                    "5432"
-  DB_USER:                    "db"
-  DB_NAME:                    "kimkublic"
-  DB_PASSWORD:                "1"
+  POSTGRES_URI:               "postgres://db:1@db-svc:5432/kimkublic"
+#  DB_HOST:                    "db-svc"
+#  DB_PORT:                    "5432"
+#  DB_USER:                    "db"
+#  DB_NAME:                    "kimkublic"
+#  DB_PASSWORD:                "1"
+  # Veriff
+  VERIFFME_API_URL:           "https://api.veriff.me/v1"
+  VERIFFME_AUTH_CLIENT:       "d5820b60-c06c-4b64-b368-0b21e9ceef82"
+  VERIFFME_API_SECRET:        "a3562911-7c6c-4c9f-9fd1-1ad7f7abc74b"
+  # Push (placeholders not real work)
+  PIGEON_APNS_KEY:            "AuthKey.p8"
+  PIGEON_APNS_KEY_IDENTIFIER: "key_identifier"
+  PIGEON_APNS_TEAM_ID:        "team_id"
+  PIGEON_FCM_KEY:             "your_fcm_key_here"
   # Quorum
   QUORUM_URI:                 "40.115.43.126:22000"
   QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount"
