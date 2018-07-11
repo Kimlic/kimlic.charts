@@ -11,7 +11,7 @@ env_api:
   ERLANG_COOKIE:              "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
   PORT:                       "4000"
   # PostgreSQL
-  POSTGRES_URI:               "postgres://db:1@db-svc:5432/kimkublic"
+  POSTGRES_URI:               "postgres://kimlic@kimlic-dev:cu97VbTtXWTxm3h@kimlic-dev.postgres.database.azure.com:5432/kimkublic"
 #  DB_HOST:                    "db-svc"
 #  DB_PORT:                    "5432"
 #  DB_USER:                    "db"
@@ -45,3 +45,32 @@ resources_api:
 rollingUpdate:
   maxSurge: "1"
   maxUnavailable: "1"
+
+image_db: 
+  repository: nebo15/alpine-postgre
+  tag: pglogical
+
+env_db:
+  app: "postgresql"
+  version: "9.6"
+  POSTGRES_USER: "db"
+  POSTGRES_PASSWORD: "1"
+  PGDATA: "/var/lib/postgresql/data"
+  POSTGRES_DB: "kimkublic"
+  db_port: "5432"
+
+service:
+  name: "db-svc"
+
+resources_db:
+  cpu: "50m"
+  memory: "112Mi"
+  limits_memory: "1Gi"
+  storage: "10Gi"
+
+rollingUpdate:
+  maxSurge: "1"
+  maxUnavailable: "1"
+
+storageClass: default
+env: dev

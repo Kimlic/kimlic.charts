@@ -5,7 +5,7 @@ kind: Secret
 metadata:
   creationTimestamp: 2018-06-08T13:53:56Z
   name: regcred
-  namespace: dev
+  namespace: attestation
   resourceVersion: "1861819"
   selfLink: /api/v1/namespaces/dev/secrets/regcred
   uid: 6335a333-6b23-11e8-a41c-ac1f6b272ee2
