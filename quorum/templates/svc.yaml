@@ -6,6 +6,7 @@ metadata:
   labels:
     app:  {{ .Values.node }}
 spec:
+  clusterIP: {{ .Values.ip }}
   ports:
   - port:  {{ .Values.port_svc }}
     targetPort: {{ .Values.port }}

@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "node3-0.0.1"
+  tag: "node3-0.0.5"
 
 env_api:
     CORE_node-3_NETWORKID: node-3
@@ -24,3 +24,4 @@ port_svc: "22002"
 port: "22000"
 node: "node-3"
 env: "dev"
+ip: "10.0.0.6"
