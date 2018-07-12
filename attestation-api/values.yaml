@@ -2,7 +2,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/attestation_api
-  tag: "0.0.4"
+  tag: "0.0.5"
 
 env_api:
   # Phoenix application
@@ -11,6 +11,7 @@ env_api:
   PORT:                       "4000"
   # PostgreSQL
   POSTGRES_URI:               "postgres://kimlic@kimlic-dev:cu97VbTtXWTxm3h@kimlic-dev.postgres.database.azure.com:5432/kimkublic"
+  DB_MIGRATE:                 "true"
 #  DB_HOST:                    "db-svc"
 #  DB_PORT:                    "5432"
 #  DB_USER:                    "db"
