@@ -1,4 +1,3 @@
-
 ## API ##
 #Docker image and tag for api
 image_api:
@@ -11,7 +10,7 @@ env_api:
   ERLANG_COOKIE:              "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
   PORT:                       "4000"
   # PostgreSQL
-  POSTGRES_URI:               "postgres://db:1@db-svc:5432/kimkublic"
+  POSTGRES_URI:               "postgres://kimlic@kimlic-dev:cu97VbTtXWTxm3h@kimlic-dev.postgres.database.azure.com:5432/kimkublic"
 #  DB_HOST:                    "db-svc"
 #  DB_PORT:                    "5432"
 #  DB_USER:                    "db"
@@ -36,6 +35,10 @@ env_api:
   VERIFF_AP_PASSWORD:         "Veriffp@ssw0rd"
   # Context storage address
   CONTEXT_STORAGE_ADDRESS:    "0xb25a1f88f81efd7f2b62816eca4ef0307d03ab66"
+  # RabbitMQ
+  RABBITMQ_HOST:                                  "rabbitmq-att.attestation.svc.cluster.local"
+  RABBITMQ_USERNAME:                              "user"
+  RABBITMQ_PASSWORD:                              "gi2W4I2QdQ"
 resources_api:
   cpu: "10m"
   cpu_limit: "1"
