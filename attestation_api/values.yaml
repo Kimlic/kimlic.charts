@@ -1,4 +1,3 @@
-
 ## API ##
 #Docker image and tag for api
 image_api:
@@ -36,6 +35,10 @@ env_api:
   VERIFF_AP_PASSWORD:         "Veriffp@ssw0rd"
   # Context storage address
   CONTEXT_STORAGE_ADDRESS:    "0xb25a1f88f81efd7f2b62816eca4ef0307d03ab66"
+  # RabbitMQ
+  RABBITMQ_HOST:                                  "rabbitmq-att.attestation.svc.cluster.local"
+  RABBITMQ_USERNAME:                              "user"
+  RABBITMQ_PASSWORD:                              "gi2W4I2QdQ"
 resources_api:
   cpu: "10m"
   cpu_limit: "1"
@@ -45,32 +48,3 @@ resources_api:
 rollingUpdate:
   maxSurge: "1"
   maxUnavailable: "1"
-
-image_db: 
-  repository: nebo15/alpine-postgre
-  tag: pglogical
-
-env_db:
-  app: "postgresql"
-  version: "9.6"
-  POSTGRES_USER: "db"
-  POSTGRES_PASSWORD: "1"
-  PGDATA: "/var/lib/postgresql/data"
-  POSTGRES_DB: "kimkublic"
-  db_port: "5432"
-
-service:
-  name: "db-svc"
-
-resources_db:
-  cpu: "50m"
-  memory: "112Mi"
-  limits_memory: "1Gi"
-  storage: "10Gi"
-
-rollingUpdate:
-  maxSurge: "1"
-  maxUnavailable: "1"
-
-storageClass: default
-env: dev
