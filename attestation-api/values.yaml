@@ -2,7 +2,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/attestation_api
-  tag: "0.0.5"
+  tag: "0.0.6"
 
 env_api:
   # Phoenix application
