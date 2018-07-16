@@ -3,13 +3,14 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.54.1"
+  tag: "0.57.3"
 
 env_api:
   # Phoenix application
   SECRET_KEY:                                     "%s$lddL35j9~~uDN@n8ub1#mJHTBb7hlat#ooz?TvcjA5{mn35$d2GJFN2~MT#99"
   ERLANG_COOKIE:                                  "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
   PORT:                                           "4000"
+  DEBUG_INFO_ENABLED:                             "true"
   # Redis
   REDIS_URI:                                      "redis://:ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc=@kimlic-dev.redis.cache.windows.net:6379"
   # RabbitMQ
