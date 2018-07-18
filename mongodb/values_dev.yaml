@@ -98,7 +98,7 @@ resources: {}
 
 ## Node selector
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
-nodeSelector: # {"node": "dev"}
+nodeSelector:  {"kubernetes.io/hostname": "aks-agentpool-78429917-1"}
 
 ## Affinity
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity

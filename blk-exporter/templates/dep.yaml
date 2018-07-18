@@ -97,5 +97,5 @@ spec:
         #   failureThreshold: 3
         #   tcpSocket:
         #     port: 5000
-      nodeSelector:
-        node: {{ .Values.env }}
+  #    nodeSelector:
+  #      node: {{ .Values.env }}
