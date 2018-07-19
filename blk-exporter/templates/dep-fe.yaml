@@ -31,5 +31,5 @@ spec:
           requests:
             cpu: {{ .Values.env_fe.cpu}}
             memory: {{ .Values.env_fe.memory}}
-      nodeSelector:
-        node: {{ .Values.env }}
+    #  nodeSelector:
+    #    node: {{ .Values.env }}
