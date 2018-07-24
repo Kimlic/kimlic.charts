@@ -17,7 +17,7 @@ image_api:
   tag: "1.0.0"
 
 env_api:
-  NODE_ENDPOINT: "http://node-1:22000"
+  NODE_ENDPOINT: "http://40.115.43.126:22000"
   MONGO_CLIENT_URI: "mongodb://localhost:27017"
   MONGO_DB_NAME: "blk-quorum-dev"
   UI_IP: "http://localhost:5000"

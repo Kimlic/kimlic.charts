@@ -22,7 +22,7 @@ kibana:
 #   es_port: 9200
 
 fluentd:
-  flush_interval: 300s
+  flush_interval: 60s
   metrics_port: 24231
 
 ingress: logs-dev.kimlic.com
