@@ -44,7 +44,7 @@ resources_api:
   cpu: "10m"
   cpu_limit: "1"
   memory: "150Mi"
-  memory_limit: "300Mi"
+  memory_limit: "1000Mi"
 
 rollingUpdate:
   maxSurge: "1"
