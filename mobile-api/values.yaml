@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.58.1"
+  tag: "0.58.7"
 
 env_api:
   # Phoenix application
@@ -28,6 +28,9 @@ env_api:
   VERIFICATION_EMAIL_TTL:                         "86400" # 1 day in seconds
   VERIFICATION_PHONE_TTL:                         "3600" # 1 hour in seconds
   SYNC_VERIFICATIONS:                             "email,phone,documents.id_card,documents.passport,documents.driver_license,documents.residence_permit_card"
+  # Push
+  PIGEON_APNS_CERT:                              "/var/certs/ios-prod-certs/cert.pem"
+  PIGEON_APNS_CERT_UNENCRYPTED:                  "/var/certs/ios-prod-certs/key_unencrypted.pem"
   # Twilio
   TWILIO_ACCOUNT_SID:                             "AC07bf3306b3acf8fe318a5f60ec24466f"
   TWILIO_AUTH_TOKEN:                              "a4cb70766ad8b8bfbe47fe4f6bce0f22"
