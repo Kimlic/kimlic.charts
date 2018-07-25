@@ -1,5 +1,5 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: apps/v1beta1
+kind: StatefulSet
 metadata:
   namespace: {{ .Values.env }}
   name:  {{ .Values.node }}
@@ -7,16 +7,11 @@ metadata:
     app: {{ .Values.node }}
     version: {{ .Values.image_api.tag }}
 spec:
+  serviceName: "node"
   replicas: 1
-  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: {{ .Values.node }}
-  strategy:
-    rollingUpdate:
-      maxSurge: {{ .Values.rollingUpdate.maxSurge }}
-      maxUnavailable: {{ .Values.rollingUpdate.maxUnavailable }}
-    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -29,6 +24,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort:  {{ .Values.env_api.R_PORT }}
+          hostIP: 10.244.2.55
           protocol: TCP
         env:
         {{- range $name, $value := .Values.env_api }}

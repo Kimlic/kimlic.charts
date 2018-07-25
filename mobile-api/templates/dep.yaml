@@ -27,6 +27,13 @@ spec:
       - name: mobile-api
         image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
         imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: cert-dev
+          readOnly: true
+          mountPath: "/etc/var/certs/ios-dev-certs/"
+        - name: cert-prod
+          readOnly: true
+          mountPath: "/etc/var/certs/ios-prod-certs/"
         ports:
         - containerPort: 4000
           protocol: TCP
@@ -58,5 +65,12 @@ spec:
             port: 4000
       nodeSelector:
         # node: dev
+      volumes:
+      - name: cert-dev
+        secret:
+          secretName: ios-certs-secret
+      - name: cert-prod
+        secret:
+          secretName: ios-certs-secret-prod
       imagePullSecrets:
       - name: regcred
