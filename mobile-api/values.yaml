@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.58.7"
+  tag: "0.58.16"
 
 env_api:
   # Phoenix application
@@ -29,8 +29,8 @@ env_api:
   VERIFICATION_PHONE_TTL:                         "3600" # 1 hour in seconds
   SYNC_VERIFICATIONS:                             "email,phone,documents.id_card,documents.passport,documents.driver_license,documents.residence_permit_card"
   # Push
-  PIGEON_APNS_CERT:                              "/var/certs/ios-prod-certs/cert.pem"
-  PIGEON_APNS_CERT_UNENCRYPTED:                  "/var/certs/ios-prod-certs/key_unencrypted.pem"
+  PIGEON_APNS_CERT:                              "/etc/var/certs/ios-prod-certs/cert.pem"
+  PIGEON_APNS_CERT_UNENCRYPTED:                  "/etc/var/certs/ios-prod-certs/key_unencrypted.pem"
   # Twilio
   TWILIO_ACCOUNT_SID:                             "AC07bf3306b3acf8fe318a5f60ec24466f"
   TWILIO_AUTH_TOKEN:                              "a4cb70766ad8b8bfbe47fe4f6bce0f22"
@@ -41,13 +41,13 @@ env_api:
   QUORUM_URI:                                     "40.115.43.126:22000"
   QUORUM_ALLOWED_RPC_METHODS:                     "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
-  KIMLIC_AP_ADDRESS:                              "0xb91443e39dc944bd0be1bf08dc20d511b43cbf5d"
-  KIMLIC_AP_PASSWORD:                             "Kimlicp@ssw0rd"
-  VERIFF_AP_ADDRESS:                              "0xf980026e124b070e14172a69e18cb729ad03c1be"
-  VERIFF_AP_PASSWORD:                             "Veriffp@ssw0rd"
+  KIMLIC_AP_ADDRESS:                              "0x52a824f11585bfb5a4ef21ac6abfc764301531a0"
+  KIMLIC_AP_PASSWORD:                             "kimlicp@ssw0rd"
+  VERIFF_AP_ADDRESS:                              "0x316851eef18a134620875a15338dc4ff31ac3aa0"
+  VERIFF_AP_PASSWORD:                             "veriffp@ssw0rd"
   USER_ADDRESS:                                   "0x79315fdd6d7ea17364728e08f5e04184aeecde72"
   # Context storage address
-  CONTEXT_STORAGE_ADDRESS:                        "0x6276db81abed0456b4c0dd78bb452c41b7d32af1"
+  CONTEXT_STORAGE_ADDRESS:                        "0x7aef702bdf0e037a6034f5d9e7dd32f2be0f8e35"
 resources_api:
   cpu: "10m"
   cpu_limit: "1"
