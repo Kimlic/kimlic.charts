@@ -27,12 +27,12 @@ env_api:
   QUORUM_URI:                 "40.115.43.126:22000"
   QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
-  KIMLIC_AP_ADDRESS:          "0xb91443e39dc944bd0be1bf08dc20d511b43cbf5d"
-  KIMLIC_AP_PASSWORD:         "Kimlicp@ssw0rd"
-  VERIFF_AP_ADDRESS:          "0xf980026e124b070e14172a69e18cb729ad03c1be"
-  VERIFF_AP_PASSWORD:         "Veriffp@ssw0rd"
+  KIMLIC_AP_ADDRESS:          "0x52a824f11585bfb5a4ef21ac6abfc764301531a0"
+  KIMLIC_AP_PASSWORD:         "kimlicp@ssw0rd"
+  VERIFF_AP_ADDRESS:          "0x316851eef18a134620875a15338dc4ff31ac3aa0"
+  VERIFF_AP_PASSWORD:         "veriffp@ssw0rd"
   # Context storage address
-  CONTEXT_STORAGE_ADDRESS:    "0x6276db81abed0456b4c0dd78bb452c41b7d32af1"
+  CONTEXT_STORAGE_ADDRESS:    "0x7aef702bdf0e037a6034f5d9e7dd32f2be0f8e35"
   # RabbitMQ
   RABBITMQ_HOST:              "rabbitmq-att.attestation.svc.cluster.local"
   RABBITMQ_USERNAME:          "user"
