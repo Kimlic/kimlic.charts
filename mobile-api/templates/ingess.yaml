@@ -1,15 +1,15 @@
-# apiVersion: extensions/v1beta1
-# kind: Ingress
-# metadata:
-#   name: api-svc
-#   namespace: dev
-#   annotations:
-#     kubernetes.io/ingress.class: traefik
-# spec:
-#   rules:
-#   - host: mobile-api-dev.kimlic.com
-#     http:
-#       paths:
-#       - backend:
-#           serviceName: api-svc
-#           servicePort: 80
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-svc
+  namespace: dev
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: mobile-api-dev.kimlic.com
+    http:
+      paths:
+      - backend:
+          serviceName: api-svc
+          servicePort: 80
