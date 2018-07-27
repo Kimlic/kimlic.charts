@@ -29,7 +29,33 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort:  {{ .Values.env_api.R_PORT }}
+          hostPort:  {{ .Values.env_api.R_PORT }}
           protocol: TCP
+          name: mumble1
+        - containerPort:  {{ .Values.env_api.W_PORT }}
+          hostPort:  {{ .Values.env_api.W_PORT }}
+          protocol: TCP
+          name: mumble2
+        - containerPort:  {{ .Values.env_api.W_PORT }}
+          hostPort:  {{ .Values.env_api.W_PORT }}
+          protocol: UDP
+          name: mumble3
+        - containerPort:  {{ .Values.env_api.C_PORT }}
+          hostPort:  {{ .Values.env_api.C_PORT }}
+          protocol: TCP
+          name: mumble4
+        - containerPort:  {{ .Values.env_api.RA_PORT }}
+          hostPort:  {{ .Values.env_api.RA_PORT }}
+          protocol: TCP
+          name: mumble5
+        - containerPort:  {{ .Values.env_api.NODE_MANAGER_PORT }}
+          hostPort:  {{ .Values.env_api.NODE_MANAGER_PORT }}
+          protocol: TCP
+          name: mumble6
+        - containerPort:  {{ .Values.env_api.WS_PORT }}
+          hostPort:  {{ .Values.env_api.WS_PORT }}
+          protocol: TCP
+          name: mumble7
         env:
         {{- range $name, $value := .Values.env_api }}
         {{- if not (empty $value) }}
@@ -41,9 +67,9 @@ spec:
           requests:
             cpu: {{ .Values.resources_api.cpu }}
             memory: {{ .Values.resources_api.memory }}
-          limits:
-            cpu: {{ .Values.resources_api.cpu_limit }}
-            memory: {{ .Values.resources_api.memory_limit }}
+          # limits:
+          #   cpu: {{ .Values.resources_api.cpu_limit }}
+          #   memory: {{ .Values.resources_api.memory_limit }}
         readinessProbe:
           timeoutSeconds: 2
           initialDelaySeconds: 5
@@ -57,5 +83,6 @@ spec:
           tcpSocket:
             port:  {{ .Values.port }}
       nodeSelector:
+          kubernetes.io/hostname: aks-agentpool-78429917-1
       imagePullSecrets:
       - name: regcred

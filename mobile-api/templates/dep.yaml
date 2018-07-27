@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: dev
+  namespace:   {{ .Values.env }}
   name: api-mobile
   labels:
     app: api

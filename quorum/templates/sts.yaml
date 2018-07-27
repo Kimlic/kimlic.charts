@@ -1,57 +1,57 @@
-apiVersion: apps/v1beta1
-kind: StatefulSet
-metadata:
-  namespace: {{ .Values.env }}
-  name:  {{ .Values.node }}
-  labels:
-    app: {{ .Values.node }}
-    version: {{ .Values.image_api.tag }}
-spec:
-  serviceName: "node"
-  replicas: 1
-  selector:
-    matchLabels:
-      app: {{ .Values.node }}
-  template:
-    metadata:
-      labels:
-        app: {{ .Values.node }}
-        version: {{ .Values.image_api.tag }}
-    spec:
-      containers:
-      - name: {{ .Values.node }}
-        image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
-        imagePullPolicy: Always
-        ports:
-        - containerPort:  {{ .Values.env_api.R_PORT }}
-          hostIP: 10.244.2.55
-          protocol: TCP
-        env:
-        {{- range $name, $value := .Values.env_api }}
-        {{- if not (empty $value) }}
-        - name: {{ $name | quote }}
-          value: {{ $value | quote }}
-        {{- end }}
-        {{- end }}
-        resources:
-          requests:
-            cpu: {{ .Values.resources_api.cpu }}
-            memory: {{ .Values.resources_api.memory }}
-          limits:
-            cpu: {{ .Values.resources_api.cpu_limit }}
-            memory: {{ .Values.resources_api.memory_limit }}
-        readinessProbe:
-          timeoutSeconds: 2
-          initialDelaySeconds: 5
-          failureThreshold: 3
-          tcpSocket:
-            port:  {{ .Values.port }}
-        livenessProbe:
-          timeoutSeconds: 2
-          initialDelaySeconds: 5
-          failureThreshold: 3
-          tcpSocket:
-            port:  {{ .Values.port }}
-      nodeSelector:
-      imagePullSecrets:
-      - name: regcred
+# apiVersion: apps/v1beta1
+# kind: StatefulSet
+# metadata:
+#   namespace: {{ .Values.env }}
+#   name:  {{ .Values.node }}
+#   labels:
+#     app: {{ .Values.node }}
+#     version: {{ .Values.image_api.tag }}
+# spec:
+#   serviceName: "node"
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: {{ .Values.node }}
+#   template:
+#     metadata:
+#       labels:
+#         app: {{ .Values.node }}
+#         version: {{ .Values.image_api.tag }}
+#     spec:
+#       containers:
+#       - name: {{ .Values.node }}
+#         image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
+#         imagePullPolicy: Always
+#         ports:
+#         - containerPort:  {{ .Values.env_api.R_PORT }}
+#           hostIP: 10.244.2.55
+#           protocol: TCP
+#         env:
+#         {{- range $name, $value := .Values.env_api }}
+#         {{- if not (empty $value) }}
+#         - name: {{ $name | quote }}
+#           value: {{ $value | quote }}
+#         {{- end }}
+#         {{- end }}
+#         resources:
+#           requests:
+#             cpu: {{ .Values.resources_api.cpu }}
+#             memory: {{ .Values.resources_api.memory }}
+#           limits:
+#             cpu: {{ .Values.resources_api.cpu_limit }}
+#             memory: {{ .Values.resources_api.memory_limit }}
+#         readinessProbe:
+#           timeoutSeconds: 2
+#           initialDelaySeconds: 5
+#           failureThreshold: 3
+#           tcpSocket:
+#             port:  {{ .Values.port }}
+#         livenessProbe:
+#           timeoutSeconds: 2
+#           initialDelaySeconds: 5
+#           failureThreshold: 3
+#           tcpSocket:
+#             port:  {{ .Values.port }}
+#       nodeSelector:
+#       imagePullSecrets:
+#       - name: regcred

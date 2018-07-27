@@ -50,10 +50,12 @@ env_api:
   CONTEXT_STORAGE_ADDRESS:                        "0x7aef702bdf0e037a6034f5d9e7dd32f2be0f8e35"
 resources_api:
   cpu: "10m"
-  cpu_limit: "1"
+  cpu_limit: "2"
   memory: "150Mi"
-  memory_limit: "300Mi"
+  memory_limit: "1000Mi"
 
 rollingUpdate:
   maxSurge: "1"
   maxUnavailable: "1"
+
+env: dev
