@@ -82,7 +82,5 @@ spec:
           failureThreshold: 3
           tcpSocket:
             port:  {{ .Values.port }}
-      nodeSelector:
-          kubernetes.io/hostname: aks-agentpool-78429917-1
       imagePullSecrets:
       - name: regcred

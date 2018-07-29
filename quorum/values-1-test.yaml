@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "node11"
+  tag: "node1-test"
 
 env_api:
     CURRENT_NODE_IP: "10.0.11.10"
@@ -14,7 +14,7 @@ env_api:
     NODE_MANAGER_PORT: "22004"
     WS_PORT: "22005"
     RAFT_ID: "1"
-    NETID: "25547"
+    NETID: "75257"
     NODE_NAME: "node1-test"
     # App migrations
 resources_api:
