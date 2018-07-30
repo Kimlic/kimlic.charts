@@ -2,14 +2,24 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: api-svc
-  namespace: attestation
+  namespace: {{ .Values.env }}
   annotations:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
+  {{- if or  (eq .Values.env "dev") }}
   - host: ap-api-dev.kimlic.com
     http:
       paths:
       - backend:
           serviceName: api-svc
           servicePort: 80
+ {{- end }}
+  {{- if or  (eq .Values.env "test") }}
+  - host: mobile-api-test.kimlic.com
+    http:
+      paths:
+      - backend:
+          serviceName: api-svc
+          servicePort: 80
+ {{- end }}

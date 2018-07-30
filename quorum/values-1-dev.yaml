@@ -3,10 +3,10 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "node11"
+  tag: "node1-dev"
 
 env_api:
-    CURRENT_NODE_IP: "10.0.10.10"
+    CURRENT_NODE_IP: "40.118.69.43"
     R_PORT: "22000"
     W_PORT: "22001"
     C_PORT: "22002"
@@ -14,8 +14,8 @@ env_api:
     NODE_MANAGER_PORT: "22004"
     WS_PORT: "22005"
     RAFT_ID: "1"
-    NETID: "25547"
-    NODE_NAME: "node-1"
+    NETID: "36606"
+    NODE_NAME: "kimlic-1"
     # App migrations
 resources_api:
   cpu: "10m"
@@ -29,6 +29,6 @@ rollingUpdate:
 
 port_svc: "22000"
 port: "22000"
-node: "node-1"
+node: "kimlic-1"
 env: "dev"
-ip: "10.0.10.10"
+#ip: "10.0.10.10"
