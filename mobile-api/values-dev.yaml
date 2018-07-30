@@ -12,7 +12,7 @@ env_api:
   PORT:                                           "4000"
   DEBUG_INFO_ENABLED:                             "true"
   # Redis
-  REDIS_URI:                                      "redis://:ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc=@kimlic-dev.redis.cache.windows.net:6379"
+  REDIS_URI:                                      "redis://:ImlzxMAf7fp5s5ztw5qjK28WxUXIFS6J36iy7sO64vc=@kimlic-dev.redis.cache.windows.net:6379/1"
   # RabbitMQ
   RABBITMQ_HOST:                                  "rabbitmq.dev.svc.cluster.local"
   RABBITMQ_USERNAME:                              "user"
