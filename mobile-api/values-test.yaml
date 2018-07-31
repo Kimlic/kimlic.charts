@@ -38,7 +38,7 @@ env_api:
   RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS:  "5"
   RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT:   "86400" # 1 day in seconds
   # Quorum
-  QUORUM_URI:                                     "40.115.43.126:22000"
+  QUORUM_URI:                                     "kimlic-1.dev.svc.cluster.local:22000"
   QUORUM_ALLOWED_RPC_METHODS:                     "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
   KIMLIC_AP_ADDRESS:                              "0x52a824f11585bfb5a4ef21ac6abfc764301531a0"
