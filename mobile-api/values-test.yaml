@@ -47,7 +47,7 @@ env_api:
   VERIFF_AP_PASSWORD:                             "veriffp@ssw0rd"
   USER_ADDRESS:                                   "0x79315fdd6d7ea17364728e08f5e04184aeecde72"
   # Context storage address
-  CONTEXT_STORAGE_ADDRESS:                        "0x4cfd451945d677b240ddce3db3339971b4780a41"
+  CONTEXT_STORAGE_ADDRESS:                        "0x0e19df3e784d7c4c25174a834bd8001e23f3571e"
 resources_api:
   cpu: "10m"
   cpu_limit: "2"
