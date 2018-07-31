@@ -1,16 +1,17 @@
-apiVersion: v1
-kind: Service
-metadata:
-  namespace: attestation
-  name: api-svc-1
-  labels:
-    app: api
-spec:
-  ports:
-  - port: 80
-    targetPort: 4000
-    protocol: TCP
-    name: http
-  selector:
-    app: api
-  type: LoadBalancer
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   namespace: {{ .Values.env }}
+#   name: api-svc-1
+#   labels:
+#     app: api
+# spec:
+#   ports:
+#   - port: 80
+#     targetPort: 4000
+#     protocol: TCP
+#     name: http
+#   selector:
+#     app: api
+#   type: LoadBalancer
+#   loadBalancerIP: 40.113.131.37

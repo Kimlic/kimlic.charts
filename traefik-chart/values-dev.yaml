@@ -2,7 +2,7 @@
 image: traefik
 imageTag: 1.5.1
 serviceType: LoadBalancer
-loadBalancerIP:
+loadBalancerIP: 40.113.131.37
 #loadBalancerSourceRanges: []
 replicas: 3
 cpuRequest: 100m

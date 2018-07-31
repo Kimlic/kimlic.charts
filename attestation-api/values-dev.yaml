@@ -2,7 +2,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/attestation_api
-  tag: "0.0.10"
+  tag: "0.0.11"
 
 env_api:
   # Phoenix application
@@ -34,9 +34,9 @@ env_api:
   # Context storage address
   CONTEXT_STORAGE_ADDRESS:    "0x7aef702bdf0e037a6034f5d9e7dd32f2be0f8e35"
   # RabbitMQ
-  RABBITMQ_HOST:              "rabbitmq-att.attestation.svc.cluster.local"
+  RABBITMQ_HOST:              "rabbitmq-dev.dev.svc.cluster.local"
   RABBITMQ_USERNAME:          "user"
-  RABBITMQ_PASSWORD:          "gi2W4I2QdQ"
+  RABBITMQ_PASSWORD:          "Pig6tYHoqo"
 resources_api:
   cpu: "10m"
   cpu_limit: "1"
@@ -46,3 +46,5 @@ resources_api:
 rollingUpdate:
   maxSurge: "1"
   maxUnavailable: "1"
+
+env: dev

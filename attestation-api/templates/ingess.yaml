@@ -16,7 +16,7 @@ spec:
           servicePort: 80
  {{- end }}
   {{- if or  (eq .Values.env "test") }}
-  - host: mobile-api-test.kimlic.com
+  - host: ap-api-test.kimlic.com
     http:
       paths:
       - backend:
