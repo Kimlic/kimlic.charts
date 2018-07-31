@@ -41,7 +41,7 @@ env_api:
   QUORUM_URI:                                     "kimlic-1.dev.svc.cluster.local:22000"
   QUORUM_ALLOWED_RPC_METHODS:                     "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
-  KIMLIC_AP_ADDRESS:                              "0x52a824f11585bfb5a4ef21ac6abfc764301531a0"
+  KIMLIC_AP_ADDRESS:                              "0x724576b088cf2320ba5516bbc18a97efd641d86d"
   KIMLIC_AP_PASSWORD:                             "kimlicp@ssw0rd"
   VERIFF_AP_ADDRESS:                              "0x316851eef18a134620875a15338dc4ff31ac3aa0"
   VERIFF_AP_PASSWORD:                             "veriffp@ssw0rd"
