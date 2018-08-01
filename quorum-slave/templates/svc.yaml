@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.env }}
+  name: {{ .Values.node }}
+  labels:
+    app:  {{ .Values.node }}
+spec:
+  clusterIP: {{ .Values.ip }}
+  ports:
+  - port:  {{ .Values.env_api.R_PORT }}
+    targetPort: {{ .Values.env_api.R_PORT }}
+    protocol: TCP
+    name: mumble1
+  - port:  {{ .Values.env_api.W_PORT }}
+    targetPort: {{ .Values.env_api.W_PORT}}
+    protocol: TCP
+    name: mumble2
+  - port:  {{ .Values.env_api.W_PORT }}
+    targetPort: {{ .Values.env_api.W_PORT}}
+    protocol: UDP
+    name: mumble3
+  - port:  {{  .Values.env_api.C_PORT }}
+    targetPort: {{  .Values.env_api.C_PORT}}
+    protocol: TCP
+    name: mumble4
+  - port:  {{ .Values.env_api.RA_PORT }}
+    targetPort: {{ .Values.env_api.RA_PORT}}
+    protocol: TCP
+    name: mumble5
+  - port:  {{ .Values.env_api.NM_PORT }}
+    targetPort: {{ .Values.env_api.NM_PORT}}
+    protocol: TCP
+    name: mumble6
+  selector:
+    app: {{ .Values.node }}
+  type: ClusterIP

@@ -48,6 +48,7 @@ env_api:
   VERIFF_AP_ADDRESS:                              "0x316851eef18a134620875a15338dc4ff31ac3aa0"
   VERIFF_AP_PASSWORD:                             "veriffp@ssw0rd"
   PROFILE_SYNC_USER_ADDRESS:                      "0xccb56b7b3dd65855e59053c57bfd29830e70c090"
+  PROFILE_SYNC_USER_PASSWORD:                     ""
   # Context storage address
   CONTEXT_STORAGE_ADDRESS:                        "0xdb2e2d810fd4a3b82b2c232c2dce8057cf310828"
 resources_api:
