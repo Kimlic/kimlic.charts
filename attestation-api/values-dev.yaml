@@ -25,6 +25,7 @@ env_api:
   VERIFFME_API_SECRET:        "a3562911-7c6c-4c9f-9fd1-1ad7f7abc74b"
   # Quorum
   QUORUM_URI:                 "40.115.43.126:22000"
+  QUORUM_GAS:                 "0x1e8480"
   QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
   KIMLIC_AP_ADDRESS:          "0x52a824f11585bfb5a4ef21ac6abfc764301531a0"
