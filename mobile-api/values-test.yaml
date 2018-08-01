@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.58.16"
+  tag: "0.58.39"
 
 env_api:
   # Phoenix application
@@ -31,6 +31,7 @@ env_api:
   # Push
   PIGEON_APNS_CERT:                              "/etc/var/certs/ios-prod-certs/cert.pem"
   PIGEON_APNS_CERT_UNENCRYPTED:                  "/etc/var/certs/ios-prod-certs/key_unencrypted.pem"
+  PIGEON_FCM_KEY:                                "AAAAvbQPkNc:APA91bFh0gtzNbOEue789EMFX_kYsaE1UVvDa7V7GXKdxTBDptyxfXREnPtIuaaatb15xXQlvwaw08Kl0aeCGQ8j5i6kXpbLtdgdSoz1ck8_FFL0Zz5NeRXz0OyCxXnn-_i8xPfsD5oB2EhxOTasiQfUzhVsFRs68w"
   # Twilio
   TWILIO_ACCOUNT_SID:                             "AC07bf3306b3acf8fe318a5f60ec24466f"
   TWILIO_AUTH_TOKEN:                              "a4cb70766ad8b8bfbe47fe4f6bce0f22"
@@ -39,13 +40,14 @@ env_api:
   RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT:   "86400" # 1 day in seconds
   # Quorum
   QUORUM_URI:                                     "kimlic-1.dev.svc.cluster.local:22000"
+  QUORUM_GAS:                                     "0x1e8480"
   QUORUM_ALLOWED_RPC_METHODS:                     "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,eth_getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
   KIMLIC_AP_ADDRESS:                              "0x00d26a5e837a16327bf673336f05e64335cddb39"
   KIMLIC_AP_PASSWORD:                             "kimlicp@ssw0rd"
   VERIFF_AP_ADDRESS:                              "0x316851eef18a134620875a15338dc4ff31ac3aa0"
   VERIFF_AP_PASSWORD:                             "veriffp@ssw0rd"
-  USER_ADDRESS:                                   "0xccb56b7b3dd65855e59053c57bfd29830e70c090"
+  PROFILE_SYNC_USER_ADDRESS:                      "0xccb56b7b3dd65855e59053c57bfd29830e70c090"
   # Context storage address
   CONTEXT_STORAGE_ADDRESS:                        "0xdb2e2d810fd4a3b82b2c232c2dce8057cf310828"
 resources_api:
