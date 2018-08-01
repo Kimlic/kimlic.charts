@@ -1,0 +1,37 @@
+
+## API ##
+#Docker image and tag for api
+image_api:
+  repository: kimlictr/quorum
+  tag: "att-prod"
+
+env_api:
+    CURRENT_NODE_IP: "51.144.86.121"
+    R_PORT: "22000"
+    W_PORT: "22001"
+    C_PORT: "22002"
+    RA_PORT: "22003"
+    NM_PORT: "22004"
+    RAFTID: "2"
+    NETID: "46682"
+    NODENAME: "att-prod"
+    MASTER_IP: "23.97.133.143"
+    MC_PORT: "22002"
+
+    # App migrations
+resources_api:
+  cpu: "10m"
+  cpu_limit: "2"
+  memory: "150Mi"
+  memory_limit: "3000Mi"
+
+rollingUpdate:
+  maxSurge: "1"
+  maxUnavailable: "1"
+
+port_svc: "22000"
+port: "22000"
+node: "att-prod"
+env: "prod"
+ip: "51.144.86.121"
+slave: true

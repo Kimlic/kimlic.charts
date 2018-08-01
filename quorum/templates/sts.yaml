@@ -81,7 +81,7 @@ spec:
           tcpSocket:
             port:  {{ .Values.port }}
       nodeSelector:
-           kubernetes.io/hostname: aks-agentpool-78429917-1
+         #  kubernetes.io/hostname: aks-agentpool-78429917-1
       imagePullSecrets:
       - name: regcred
   volumeClaimTemplates:
@@ -93,4 +93,4 @@ spec:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
+          storage: 50Gi

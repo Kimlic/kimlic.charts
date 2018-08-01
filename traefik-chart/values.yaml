@@ -3,11 +3,11 @@ image: traefik
 imageTag: 1.6.2
 ## can switch the service type to NodePort if required
 serviceType: LoadBalancer
-loadBalancerIP: 
+loadBalancerIP: 104.46.45.56
 # loadBalancerSourceRanges: []
 whiteListSourceRange: []
 externalTrafficPolicy: Cluster
-replicas: 1
+replicas: 2
 
 podDisruptionBudget: {}
   # maxUnavailable: 1
@@ -15,8 +15,8 @@ podDisruptionBudget: {}
 
 cpuRequest: 100m
 memoryRequest: 20Mi
-cpuLimit: 100m
-memoryLimit: 30Mi
+cpuLimit: 500m
+memoryLimit: 300Mi
 debug:
   enabled: false
 

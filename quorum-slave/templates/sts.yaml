@@ -54,9 +54,9 @@ spec:
           value: {{ $value | quote }}
         {{- end }}
         {{- end }}
-        # volumeMounts:
-        # - mountPath: /home/node/qdat1
-        #   name: node-1-slave
+        volumeMounts:
+        - mountPath: /home/node/qdata
+          name: node-1-slave
         resources:
           requests:
             cpu: {{ .Values.resources_api.cpu }}
@@ -76,16 +76,15 @@ spec:
           failureThreshold: 3
           tcpSocket:
             port:  {{ .Values.port }}
-  # volumeClaimTemplates:
-  # - metadata:
-  #     name: node-1-slave
-  #   spec:
-  #     storageClassName: default
-  #     accessModes:
-  #       - ReadWriteOnce
-  #     resources:
-  #       requests:
-          # storage: 10Gi
-      nodeSelector:
       imagePullSecrets:
-      - name: regcred
+         - name: regcred
+  volumeClaimTemplates:
+  - metadata:
+      name: node-1-slave
+    spec:
+      storageClassName: default
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 50Gi

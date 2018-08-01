@@ -1,0 +1,64 @@
+
+## API ##
+#Docker image and tag for api
+image_api:
+  repository: kimlictr/mobile_api
+  tag: "0.58.39"
+
+env_api:
+  # Phoenix application
+  SECRET_KEY:                                     "%s$lddL35j9~~uDN@n8ub1#mJHTBb7hlat#ooz?TvcjA5{mn35$d2GJFN2~MT#99"
+  ERLANG_COOKIE:                                  "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
+  PORT:                                           "4000"
+  DEBUG_INFO_ENABLED:                             "true"
+  # Redis
+  REDIS_URI:                                      "redis://:gVDxl23VJzYlt51xzJMRx1d75rsp6KLgh9sel20qLfA=@kimlic-prod.redis.cache.windows.net:6379"
+  # RabbitMQ
+  RABBITMQ_HOST:                                  "rabbitmq"
+  RABBITMQ_USERNAME:                              "user"
+  RABBITMQ_PASSWORD:                              "JmamFdMZRM"
+  # Email
+  AMAZON_SES_REGION_ENDPOINT:                     "eu-west-1"
+  AMAZON_SES_ACCESS_KEY:                          "AKIAJXIR6LE2FNZFBTFA"
+  AMAZON_SES_SECRET_KEY:                          "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"
+  EMAIL_CREATE_PROFILE_FROM_EMAIL:                "verification@kimlic.com"
+  EMAIL_CREATE_PROFILE_FROM_NAME:                 "Kimlic"
+  EMAIL_CREATE_PROFILE_SUBJECT:                   "Kimlic - User email verification"
+  # Verifications
+  VERIFICATION_EMAIL_TTL:                         "86400" # 1 day in seconds
+  VERIFICATION_PHONE_TTL:                         "3600" # 1 hour in seconds
+  SYNC_VERIFICATIONS:                             "email,phone,documents.id_card,documents.passport,documents.driver_license,documents.residence_permit_card"
+  # Push
+  PIGEON_APNS_CERT:                              "/etc/var/certs/ios-prod-certs/cert.pem"
+  PIGEON_APNS_CERT_UNENCRYPTED:                  "/etc/var/certs/ios-prod-certs/key_unencrypted.pem"
+  PIGEON_FCM_KEY:                                "AAAAvbQPkNc:APA91bFh0gtzNbOEue789EMFX_kYsaE1UVvDa7V7GXKdxTBDptyxfXREnPtIuaaatb15xXQlvwaw08Kl0aeCGQ8j5i6kXpbLtdgdSoz1ck8_FFL0Zz5NeRXz0OyCxXnn-_i8xPfsD5oB2EhxOTasiQfUzhVsFRs68w"
+  # Twilio
+  TWILIO_ACCOUNT_SID:                             "AC07bf3306b3acf8fe318a5f60ec24466f"
+  TWILIO_AUTH_TOKEN:                              "a4cb70766ad8b8bfbe47fe4f6bce0f22"
+  # SMS rate limit
+  RATE_LIMIT_CREATE_PHONE_VERIFICATION_ATTEMPTS:  "5"
+  RATE_LIMIT_CREATE_PHONE_VERIFICATION_TIMEOUT:   "86400" # 1 day in seconds
+  # Quorum
+  QUORUM_URI:                                     "node-prod:22000"
+  QUORUM_GAS:                                     "0x1e8480"
+  QUORUM_ALLOWED_RPC_METHODS:                     "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,eth_getTransactionReceipt,personal_newAccount,personal_unlockAccount"
+  # Attestation parties addresses
+  KIMLIC_AP_ADDRESS:                              "0x00d26a5e837a16327bf673336f05e64335cddb39"
+  KIMLIC_AP_PASSWORD:                             "kimlicp@ssw0rd"
+  VERIFF_AP_ADDRESS:                              "0x316851eef18a134620875a15338dc4ff31ac3aa0"
+  VERIFF_AP_PASSWORD:                             "veriffp@ssw0rd"
+  PROFILE_SYNC_USER_ADDRESS:                      "0xccb56b7b3dd65855e59053c57bfd29830e70c090"
+  PROFILE_SYNC_USER_PASSWORD:                     ""
+  # Context storage address
+  CONTEXT_STORAGE_ADDRESS:                        "0xdb2e2d810fd4a3b82b2c232c2dce8057cf310828"
+resources_api:
+  cpu: "10m"
+  cpu_limit: "2"
+  memory: "150Mi"
+  memory_limit: "1000Mi"
+
+rollingUpdate:
+  maxSurge: "1"
+  maxUnavailable: "1"
+
+env: prod

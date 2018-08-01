@@ -4,5 +4,5 @@ data:
 kind: Secret
 metadata:
   name: regcred
-  namespace: test
+  namespace: prod
 type: kubernetes.io/dockercfg

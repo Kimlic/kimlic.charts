@@ -1,0 +1,51 @@
+## API ##
+#Docker image and tag for api
+image_api:
+  repository: kimlictr/attestation_api
+  tag: "0.0.11"
+
+env_api:
+  # Phoenix application
+  SECRET_KEY:                 "84kntMYOcyFTBn7bL0ydvotZ4gDT1nPjwseG+VfCValy9GES2pgI2ir1FQemS/lz"
+  ERLANG_COOKIE:              "mioPh52jUyGxrUPIhfvaMrTP5oM3qIGx"
+  PORT:                       "4000"
+  # PostgreSQL
+  DB_MIGRATE:                 "true"
+  DB_HOST:                    "kimlic-prod.postgres.database.azure.com"
+  DB_PORT:                    "5432"
+  DB_USER:                    "kimlic@kimlic-prod"
+  DB_NAME:                    "kimkublic"
+  DB_PASSWORD:                "RCwfdCLFJ634yGn"
+  DB_POOL_SIZE:               "10"
+  # Push
+  PUSH_URL:                   "https://mobile-api.kimlic.com/api/push"
+  # Veriff
+  VERIFFME_API_URL:           "https://api.veriff.me/v1"
+  VERIFFME_AUTH_CLIENT:       "d5820b60-c06c-4b64-b368-0b21e9ceef82"
+  VERIFFME_API_SECRET:        "a3562911-7c6c-4c9f-9fd1-1ad7f7abc74b"
+  # Quorum
+  QUORUM_URI:                 "att-slave:22000"
+  QUORUM_GAS:                 "0x1e8480"
+  QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
+  # Attestation parties addresses
+  KIMLIC_AP_ADDRESS:          "0x52a824f11585bfb5a4ef21ac6abfc764301531a0"
+  KIMLIC_AP_PASSWORD:         "kimlicp@ssw0rd"
+  VERIFF_AP_ADDRESS:          "0x316851eef18a134620875a15338dc4ff31ac3aa0"
+  VERIFF_AP_PASSWORD:         "veriffp@ssw0rd"
+  # Context storage address
+  CONTEXT_STORAGE_ADDRESS:    "0x7aef702bdf0e037a6034f5d9e7dd32f2be0f8e35"
+  # RabbitMQ
+  RABBITMQ_HOST:              "rabbitmq"
+  RABBITMQ_USERNAME:          "user"
+  RABBITMQ_PASSWORD:          "GXatKRkw7O"
+resources_api:
+  cpu: "10m"
+  cpu_limit: "1"
+  memory: "150Mi"
+  memory_limit: "1000Mi"
+
+rollingUpdate:
+  maxSurge: "1"
+  maxUnavailable: "1"
+
+env: prod
