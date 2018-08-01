@@ -3,21 +3,21 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "test"
+  tag: "att-test"
 
 env_api:
-    CURRENT_NODE_IP: "10.0.10.11"
-    MASTER_IP: "10.0.10.10"
+    CURRENT_NODE_IP: "13.81.243.31"
     R_PORT: "22000"
     W_PORT: "22001"
     C_PORT: "22002"
     RA_PORT: "22003"
     NM_PORT: "22004"
-    WS_PORT: "22005"
     RAFTID: "2"
-    NETID: "82487"
-    NODENAME: "kimlic-2"
+    NETID: "13602"
+    NODENAME: "att-test-slave"
+    MASTER_IP: "51.144.109.43"
     MC_PORT: "22002"
+
     # App migrations
 resources_api:
   cpu: "10m"
@@ -31,6 +31,7 @@ rollingUpdate:
 
 port_svc: "22000"
 port: "22000"
-node: "kimlic-2"
-env: "dev"
-ip: "10.0.10.11"
+node: "att-slave-test"
+env: "test"
+ip: "13.81.243.31"
+slave: true

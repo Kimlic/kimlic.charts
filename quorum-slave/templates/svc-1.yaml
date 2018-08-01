@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: dev
+  namespace: {{ .Values.env }}
   name: node-lb
   labels:
     app: {{ .Values.node }}
@@ -30,4 +30,4 @@ spec:
   selector:
     app: {{ .Values.node }}
   type: LoadBalancer
-  loadBalancerIP: 40.118.56.164
+  loadBalancerIP: {{ .Values.ip }}

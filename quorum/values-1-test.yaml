@@ -6,7 +6,7 @@ image_api:
   tag: "node1-test"
 
 env_api:
-    CURRENT_NODE_IP: "10.0.11.10"
+    CURRENT_NODE_IP: "51.144.109.43"
     R_PORT: "22000"
     W_PORT: "22001"
     C_PORT: "22002"
@@ -14,8 +14,8 @@ env_api:
     NODE_MANAGER_PORT: "22004"
     WS_PORT: "22005"
     RAFT_ID: "1"
-    NETID: "75257"
-    NODE_NAME: "node1-test"
+    NETID: "13602"
+    NODE_NAME: "kimlic-test"
     # App migrations
 resources_api:
   cpu: "10m"
@@ -31,4 +31,4 @@ port_svc: "22000"
 port: "22000"
 node: "node1-test"
 env: "test"
-ip: "10.0.11.10"
+ip: "51.144.109.43"

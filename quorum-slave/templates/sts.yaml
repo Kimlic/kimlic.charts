@@ -85,7 +85,7 @@ spec:
   #       - ReadWriteOnce
   #     resources:
   #       requests:
-          storage: 10Gi
+          # storage: 10Gi
       nodeSelector:
       imagePullSecrets:
       - name: regcred

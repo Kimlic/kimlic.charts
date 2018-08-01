@@ -60,14 +60,14 @@ spec:
         {{- end }}
         volumeMounts:
         - mountPath: /home/node/qdata
-          name: node-1
+          name: {{ .Values.node }}
         resources:
           requests:
             cpu: {{ .Values.resources_api.cpu }}
             memory: {{ .Values.resources_api.memory }}
-          # limits:
-          #   cpu: {{ .Values.resources_api.cpu_limit }}
-          #   memory: {{ .Values.resources_api.memory_limit }}
+          limits:
+            cpu: {{ .Values.resources_api.cpu_limit }}
+            memory: {{ .Values.resources_api.memory_limit }}
         readinessProbe:
           timeoutSeconds: 2
           initialDelaySeconds: 5
@@ -80,9 +80,13 @@ spec:
           failureThreshold: 3
           tcpSocket:
             port:  {{ .Values.port }}
+      nodeSelector:
+           kubernetes.io/hostname: aks-agentpool-78429917-1
+      imagePullSecrets:
+      - name: regcred
   volumeClaimTemplates:
   - metadata:
-      name: node-1
+      name: {{ .Values.node }}
     spec:
       storageClassName: default
       accessModes:
@@ -90,6 +94,3 @@ spec:
       resources:
         requests:
           storage: 10Gi
-      nodeSelector:
-      imagePullSecrets:
-      - name: regcred

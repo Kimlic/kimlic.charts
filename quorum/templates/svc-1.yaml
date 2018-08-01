@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: dev
+  namespace:  {{ .Values.env }}
   name: node-lb
   labels:
-    app: kimlic-1
+    app: {{ .Values.node }}
 spec:
   ports:
   - port: 22000
@@ -28,6 +28,6 @@ spec:
     protocol: TCP
     name: port6
   selector:
-    app: kimlic-1
+    app: {{ .Values.node }}
   type: LoadBalancer
-  loadBalancerIP: 40.118.69.43
+  loadBalancerIP: {{ .Values.ip }}
