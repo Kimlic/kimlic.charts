@@ -1,0 +1,91 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  namespace: {{ .Values.env }}
+  name:  {{ .Values.node }}
+  labels:
+    app: {{ .Values.node }}
+    version: {{ .Values.image_api.tag }}
+spec:
+  serviceName: "node-slave"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.node }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.node }}
+        version: {{ .Values.image_api.tag }}
+        imagePullPolicy: Always
+    spec:
+      containers:
+      - name: {{ .Values.node }}
+        image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
+        ports:
+        - containerPort:  {{ .Values.env_api.R_PORT }}
+          hostPort:  {{ .Values.env_api.R_PORT }}
+          protocol: TCP
+          name: port-1
+        - containerPort:  {{ .Values.env_api.W_PORT }}
+          hostPort:  {{ .Values.env_api.W_PORT }}
+          protocol: TCP
+          name: port-2
+        - containerPort:  {{ .Values.env_api.W_PORT }}
+          hostPort:  {{ .Values.env_api.W_PORT }}
+          protocol: UDP
+          name: port-3
+        - containerPort:  {{ .Values.env_api.C_PORT }}
+          hostPort:  {{ .Values.env_api.C_PORT }}
+          protocol: TCP
+          name: port-4
+        - containerPort:  {{ .Values.env_api.RA_PORT }}
+          hostPort:  {{ .Values.env_api.RA_PORT }}
+          protocol: TCP
+          name: port-5
+        - containerPort:  {{ .Values.env_api.NM_PORT }}
+          hostPort:  {{ .Values.env_api.NM_PORT }}
+          protocol: TCP
+          name: port-6
+        env:
+        {{- range $name, $value := .Values.env_api }}
+        {{- if not (empty $value) }}
+        - name: {{ $name | quote }}
+          value: {{ $value | quote }}
+        {{- end }}
+        {{- end }}
+        # volumeMounts:
+        # - mountPath: /home/node/qdat1
+        #   name: node-1-slave
+        resources:
+          requests:
+            cpu: {{ .Values.resources_api.cpu }}
+            memory: {{ .Values.resources_api.memory }}
+          # limits:
+          #   cpu: {{ .Values.resources_api.cpu_limit }}
+          #   memory: {{ .Values.resources_api.memory_limit }}
+        readinessProbe:
+          timeoutSeconds: 2
+          initialDelaySeconds: 5
+          failureThreshold: 3
+          tcpSocket:
+            port:  {{ .Values.port }}
+        livenessProbe:
+          timeoutSeconds: 2
+          initialDelaySeconds: 5
+          failureThreshold: 3
+          tcpSocket:
+            port:  {{ .Values.port }}
+  # volumeClaimTemplates:
+  # - metadata:
+  #     name: node-1-slave
+  #   spec:
+  #     storageClassName: default
+  #     accessModes:
+  #       - ReadWriteOnce
+  #     resources:
+  #       requests:
+          storage: 10Gi
+      nodeSelector:
+      imagePullSecrets:
+      - name: regcred
