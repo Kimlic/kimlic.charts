@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/mobile_api
-  tag: "0.58.39"
+  tag: "0.58.41"
 
 env_api:
   # Phoenix application
