@@ -43,6 +43,8 @@ env_api:
   # Attestation parties addresses
   KIMLIC_AP_ADDRESS:                              "0x00d26a5e837a16327bf673336f05e64335cddb39"
   KIMLIC_AP_PASSWORD:                             "kimlicp@ssw0rd"
+  VERIFF_AP_ADDRESS:                              "0x24e19179d397e6d79a1c6c6fb29d8ac8248087fb"
+  VERIFF_AP_PASSWORD:                             ""
   USER_ADDRESS:                                   "0xccb56b7b3dd65855e59053c57bfd29830e70c090"
   # Context storage address
   CONTEXT_STORAGE_ADDRESS:                        "0xdb2e2d810fd4a3b82b2c232c2dce8057cf310828"
