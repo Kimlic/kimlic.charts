@@ -24,7 +24,7 @@ env_api:
   VERIFFME_AUTH_CLIENT:       "d5820b60-c06c-4b64-b368-0b21e9ceef82"
   VERIFFME_API_SECRET:        "a3562911-7c6c-4c9f-9fd1-1ad7f7abc74b"
   # Quorum
-  QUORUM_URI:                 "40.115.43.126:22000"
+  QUORUM_URI:                 "att-slave-test:22000"
   QUORUM_GAS:                 "0x1e8480"
   QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
@@ -35,9 +35,9 @@ env_api:
   # Context storage address
   CONTEXT_STORAGE_ADDRESS:    "0x7aef702bdf0e037a6034f5d9e7dd32f2be0f8e35"
   # RabbitMQ
-  RABBITMQ_HOST:              "rabbitmq-att.attestation.svc.cluster.local"
+  RABBITMQ_HOST:              "rabbitmq-test"
   RABBITMQ_USERNAME:          "user"
-  RABBITMQ_PASSWORD:          "AjuyZdiGZ7"
+  RABBITMQ_PASSWORD:          "a2pcOZuStj"
 resources_api:
   cpu: "10m"
   cpu_limit: "1"
