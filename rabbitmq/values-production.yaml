@@ -63,7 +63,7 @@ rabbitmq:
   ## ref: https://github.com/bitnami/bitnami-docker-rabbitmq#environment-variables
   ## ref: https://www.rabbitmq.com/disk-alarms.html
   ##
-  diskFreeLimit: '"15GiB"'
+  diskFreeLimit: '"6GiB"'
 
   ## Plugins to enable
   plugins: |-
@@ -100,7 +100,7 @@ persistence:
   accessMode: ReadWriteOnce
 
   # If you change this value, you might have to adjust `rabbitmq.diskFreeLimit` as well.
-  size: 20Gi
+  size: 8Gi
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
@@ -109,6 +109,9 @@ resources:
   requests:
     memory: 256Mi
     cpu: 100m
+  limits:
+    memory: 2560Mi
+    cpu: 1000m
 
 ## Replica count, set to 3 to provide a default available cluster
 replicas: 1
