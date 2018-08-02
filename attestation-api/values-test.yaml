@@ -2,7 +2,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/attestation_api
-  tag: "0.0.10"
+  tag: "0.0.11"
 
 env_api:
   # Phoenix application
@@ -14,7 +14,7 @@ env_api:
   DB_HOST:                    "kimlic-dev.postgres.database.azure.com"
   DB_PORT:                    "5432"
   DB_USER:                    "kimlic@kimlic-dev"
-  DB_NAME:                    "kimkublic"
+  DB_NAME:                    "kimkublic_test"
   DB_PASSWORD:                "cu97VbTtXWTxm3h"
   DB_POOL_SIZE:               "10"
   # Push
