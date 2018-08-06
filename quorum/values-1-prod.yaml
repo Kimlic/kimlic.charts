@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "node-prod"
+  tag: "master-prod"
 
 env_api:
     CURRENT_NODE_IP: "23.97.133.143"
@@ -14,8 +14,8 @@ env_api:
     NODE_MANAGER_PORT: "22004"
     WS_PORT: "22005"
     RAFT_ID: "1"
-    NETID: "46682"
-    NODE_NAME: "node-prod"
+    NETID: "60404"
+    NODE_NAME: "node-master"
     # App migrations
 resources_api:
   cpu: "10m"
@@ -29,6 +29,6 @@ rollingUpdate:
 
 port_svc: "22000"
 port: "22000"
-node: "node-prod"
+node: "node-master"
 env: "prod"
 ip: "23.97.133.143"

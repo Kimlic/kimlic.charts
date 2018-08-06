@@ -55,7 +55,7 @@ spec:
         {{- end }}
         {{- end }}
         volumeMounts:
-        - mountPath: /home/node/qdata
+        - mountPath: /home/node/qdata1
           name: node-1-slave
         resources:
           requests:
@@ -77,7 +77,7 @@ spec:
           tcpSocket:
             port:  {{ .Values.port }}
       imagePullSecrets:
-         - name: regcred
+          - name: regcred
   volumeClaimTemplates:
   - metadata:
       name: node-1-slave
