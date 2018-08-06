@@ -2,7 +2,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/attestation_api
-  tag: "0.0.12"
+  tag: "0.0.13"
 
 env_api:
   # Phoenix application
@@ -21,8 +21,8 @@ env_api:
   PUSH_URL:                   "https://mobile-api.kimlic.com/api/push"
   # Veriff
   VERIFFME_API_URL:           "https://api.veriff.me/v1"
-  VERIFFME_AUTH_CLIENT:       "d5820b60-c06c-4b64-b368-0b21e9ceef82"
-  VERIFFME_API_SECRET:        "a3562911-7c6c-4c9f-9fd1-1ad7f7abc74b"
+  VERIFFME_AUTH_CLIENT:       "20ad2125-cbd8-4189-bf07-c300db190958"
+  VERIFFME_API_SECRET:        "d9cbef74-4436-426b-b8ce-c6ceb3659d42"
   # Quorum
   QUORUM_URI:                 "att-prod:22000"
   QUORUM_GAS:                 "0x1e8480"
