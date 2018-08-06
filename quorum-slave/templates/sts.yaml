@@ -7,7 +7,7 @@ metadata:
     app: {{ .Values.node }}
     version: {{ .Values.image_api.tag }}
 spec:
-  serviceName: "node-slave"
+  serviceName: "node-slave-1"
   replicas: 1
   selector:
     matchLabels:
@@ -17,34 +17,35 @@ spec:
       labels:
         app: {{ .Values.node }}
         version: {{ .Values.image_api.tag }}
-        imagePullPolicy: Always
     spec:
       containers:
       - name: {{ .Values.node }}
         image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
+        # command: [ "/bin/bash", "-c", "--" ]
+        # args: [ "while true; do sleep 300; done;" ]
         ports:
         - containerPort:  {{ .Values.env_api.R_PORT }}
-          hostPort:  {{ .Values.env_api.R_PORT }}
+          #hostPort:  {{ .Values.env_api.R_PORT }}
           protocol: TCP
           name: port-1
         - containerPort:  {{ .Values.env_api.W_PORT }}
-          hostPort:  {{ .Values.env_api.W_PORT }}
+          #hostPort:  {{ .Values.env_api.W_PORT }}
           protocol: TCP
           name: port-2
         - containerPort:  {{ .Values.env_api.W_PORT }}
-          hostPort:  {{ .Values.env_api.W_PORT }}
+          #hostPort:  {{ .Values.env_api.W_PORT }}
           protocol: UDP
           name: port-3
         - containerPort:  {{ .Values.env_api.C_PORT }}
-          hostPort:  {{ .Values.env_api.C_PORT }}
+          #hostPort:  {{ .Values.env_api.C_PORT }}
           protocol: TCP
           name: port-4
         - containerPort:  {{ .Values.env_api.RA_PORT }}
-          hostPort:  {{ .Values.env_api.RA_PORT }}
+          #hostPort:  {{ .Values.env_api.RA_PORT }}
           protocol: TCP
           name: port-5
         - containerPort:  {{ .Values.env_api.NM_PORT }}
-          hostPort:  {{ .Values.env_api.NM_PORT }}
+          #hostPort:  {{ .Values.env_api.NM_PORT }}
           protocol: TCP
           name: port-6
         env:
@@ -55,7 +56,7 @@ spec:
         {{- end }}
         {{- end }}
         volumeMounts:
-        - mountPath: /home/node/qdata1
+        - mountPath: /home/node/qdata
           name: node-1-slave
         resources:
           requests:
@@ -78,6 +79,7 @@ spec:
             port:  {{ .Values.port }}
       imagePullSecrets:
           - name: regcred
+      imagePullPolicy: Always
   volumeClaimTemplates:
   - metadata:
       name: node-1-slave
@@ -87,4 +89,4 @@ spec:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
+          storage: 50Gi

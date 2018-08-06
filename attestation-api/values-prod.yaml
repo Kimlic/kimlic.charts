@@ -37,7 +37,7 @@ env_api:
   # RabbitMQ
   RABBITMQ_HOST:              "rabbitmq"
   RABBITMQ_USERNAME:          "user"
-  RABBITMQ_PASSWORD:          "GXatKRkw7O"
+  RABBITMQ_PASSWORD:          "6UpXv7oTxA"
 resources_api:
   cpu: "10m"
   cpu_limit: "1"

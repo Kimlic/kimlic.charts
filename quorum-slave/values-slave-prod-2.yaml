@@ -3,19 +3,21 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "master-prod-1"
+  tag: "slave-2"
 
 env_api:
-    CURRENT_NODE_IP: "23.97.133.143"
+    CURRENT_NODE_IP: "40.114.194.255"
     R_PORT: "22000"
     W_PORT: "22001"
     C_PORT: "22002"
     RA_PORT: "22003"
-    NODE_MANAGER_PORT: "22004"
-    WS_PORT: "22005"
-    RAFT_ID: "1"
+    NM_PORT: "22004"
+    RAFTID: "3"
     NETID: "91313"
-    NODE_NAME: "master"
+    NODENAME: "slave-2"
+    MASTER_IP: "23.97.133.143"
+    MC_PORT: "22002"
+
     # App migrations
 resources_api:
   cpu: "10m"
@@ -29,6 +31,7 @@ rollingUpdate:
 
 port_svc: "22000"
 port: "22000"
-node: "master"
+node: "slave-2"
 env: "prod"
-ip: "23.97.133.143"
+ip: "40.114.194.255"
+slave: true

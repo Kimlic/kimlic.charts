@@ -3,18 +3,18 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "att-prod"
+  tag: "slave-1"
 
 env_api:
-    CURRENT_NODE_IP: "51.144.86.121"
+    CURRENT_NODE_IP: "40.114.211.212"
     R_PORT: "22000"
     W_PORT: "22001"
     C_PORT: "22002"
     RA_PORT: "22003"
     NM_PORT: "22004"
     RAFTID: "2"
-    NETID: "60404"
-    NODENAME: "att_prod"
+    NETID: "91313"
+    NODENAME: "slave-1"
     MASTER_IP: "23.97.133.143"
     MC_PORT: "22002"
 
@@ -31,7 +31,7 @@ rollingUpdate:
 
 port_svc: "22000"
 port: "22000"
-node: "att-prod"
+node: "slave-prod"
 env: "prod"
-ip: "51.144.86.121"
+ip: "40.114.211.212"
 slave: true
