@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "att-dev"
+  tag: "att-dev-1"
 
 env_api:
     CURRENT_NODE_IP: "40.118.56.164"
@@ -12,7 +12,7 @@ env_api:
     C_PORT: "22002"
     RA_PORT: "22003"
     NM_PORT: "22004"
-    RAFTID: "3"
+    RAFTID: "2"
     NETID: "36606"
     NODENAME: "att-slave"
     MASTER_IP: "40.118.69.43"
@@ -33,5 +33,5 @@ port_svc: "22000"
 port: "22000"
 node: "att-slave"
 env: "dev"
-#ip: "10.0.10.10"
+ip: "40.118.56.164"
 slave: true
