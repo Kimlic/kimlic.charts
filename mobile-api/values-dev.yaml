@@ -43,14 +43,14 @@ env_api:
   QUORUM_GAS:                                     "0x1e8480"
   QUORUM_ALLOWED_RPC_METHODS:                     "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,eth_getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
-  KIMLIC_AP_ADDRESS:                              "0x60098c261bf6967f2b46478446130aa2415c662b"
-  KIMLIC_AP_PASSWORD:                             "02e8a0c1-db48-452d-8cc0-56cae5f8d123p@ssw0rd"
-  VERIFF_AP_ADDRESS:                              "0x96aea51d17b8b829e0013aa75f74d5db6f9c898d"
-  VERIFF_AP_PASSWORD:                             "617519c4-fd3c-4227-a676-52f3eca48661p@ssw0rd"
-  PROFILE_SYNC_USER_ADDRESS:                      "0xae99c659ebb437a611ad85e1a03976f491af4f5f"
-  PROFILE_SYNC_USER_PASSWORD:                     "p@ssw0rd"
+  KIMLIC_AP_ADDRESS:                              "0x4c972860ff083858b24399a95a1a74fb417c09dd"
+  KIMLIC_AP_PASSWORD:                             "c8e47620-3187-4a55-9d39-97e1fa858e2fp@ssw0rd"
+  VERIFF_AP_ADDRESS:                              "0x764712b55d7117e1a90c95ae732fd09f4311e316"
+  VERIFF_AP_PASSWORD:                             "bd6ba752-ea19-49c2-8ed1-3e4fd3db5586p@ssw0rd"
+  PROFILE_SYNC_USER_ADDRESS:                      "0x682e9f074490445334f73eb50d7b672ad2789e8e"
+  PROFILE_SYNC_USER_PASSWORD:                     "4c236e9a-8cc9-4a60-b1d1-c6051804e03b"
   # Context storage address
-  CONTEXT_STORAGE_ADDRESS:                        "0xf25186b5081ff5ce73482ad761db0eb0d25abfbf"
+  CONTEXT_STORAGE_ADDRESS:                        "0x616a33eca5d07888f6dc63854887e5acb5a104bb"
 resources_api:
   cpu: "10m"
   cpu_limit: "2"
