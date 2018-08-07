@@ -24,7 +24,7 @@ env_api:
   VERIFFME_AUTH_CLIENT:       "20ad2125-cbd8-4189-bf07-c300db190958"
   VERIFFME_API_SECRET:        "d9cbef74-4436-426b-b8ce-c6ceb3659d42"
   # Quorum
-  QUORUM_URI:                 "att-prod:22000"
+  QUORUM_URI:                 "ap-veriff-slave:22000"
   QUORUM_GAS:                 "0x1e8480"
   QUORUM_ALLOWED_RPC_METHODS: "web3_clientVersion,eth_call,eth_sendTransaction,eth_sendRawTransaction,eth_getTransactionCount,getTransactionReceipt,personal_newAccount,personal_unlockAccount"
   # Attestation parties addresses
