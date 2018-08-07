@@ -21,9 +21,9 @@ spec:
     spec:
       containers:
       - name: {{ .Values.node }}
-        # image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
+        image: {{ .Values.image_api.repository }}:{{ .Values.image_api.tag }}
         # command: [ "/bin/bash", "-c", "--" ]
-        args: [ "while true; do sleep 300; done;" ]
+        # args: [ "while true; do sleep 300; done;" ]
         ports:
         - containerPort:  {{ .Values.env_api.R_PORT }}
           hostPort:  {{ .Values.env_api.R_PORT }}
