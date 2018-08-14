@@ -3,7 +3,7 @@
 #Docker image and tag for api
 image_api:
   repository: kimlictr/quorum
-  tag: "att-dev-1"
+  tag: "att-dev-2"
 
 env_api:
     CURRENT_NODE_IP: "40.118.56.164"
